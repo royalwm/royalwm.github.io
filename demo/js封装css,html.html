@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>css(),html()js简单的实现</title>
+<style type="text/css">
+    *{margin:0;padding:0}
+    #box{width:100px;height: 100px;background: red;}
+</style>
+</head>
+<body>
+    <div id="box"></div>
+<script type="text/javascript">
+    function $(id){
+        var dom=document.getElementById(id);
+    var jq={
+        html:function(value){
+            dom.innerHTML=value;
+            return this;
+        },
+        css:function(key,value){
+            dom.style[key]=value;
+            return this;
+        }
+    }
+     return jq;
+}
+ $("box").html("我是测试代码").css("textAlign","center").css("color","#fff");
+</script>
+</body>
+</html>

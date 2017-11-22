@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>360°旋转图片</title>
+<style type="text/css">
+    *{margin:0;padding:0}
+    img{position:absolute;top:calc(50% - 189px);left:calc(50% - 320px)}
+</style>
+</head>
+<body>
+<img id="img" src="img/miaov (0).jpg" height="378" width="640">
+<script type="text/javascript">
+    var xx=0;
+    var l=0;
+    var speed=0;
+    var lastSpeed=0;
+    var timer=null;
+    var imgDom=document.getElementById("img");
+    document.onmousedown=function(e){
+        var ev=e||event;
+        var x=ev.clientX-xx;
+        document.onmousemove=function(e){
+            var ev=e||event;
+             xx=ev.clientX-x;
+             move();
+             speed=xx-lastSpeed;
+            lastSpeed=xx;
+            return false;
+        }
+        document.onmouseup=function(){
+            document.onmousemove=null;
+            document.onmouseup=null;
+            document.title=speed;
+            timer=setInterval(function (){
+                xx+=speed;
+                move();
+            }, 30);
+        }
+        return false;
+    }
+    function move(){
+        if(speed>0){
+            speed--;
+        }else{
+            speed++;
+        }
+        if(speed==0)clearInterval(timer);
+        l=parseInt(-xx/10);
+            if(-xx>0)
+            {
+                l=l%77;
+
+            }
+            else
+            {
+                l=l+-Math.floor(l/77)*77;
+
+            }
+            imgDom.src="img/miaov ("+l+").jpg";
+
+    }
+</script>
+</body>
+</html>

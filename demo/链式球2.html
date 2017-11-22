@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>链式球2</title>
+<style type="text/css">
+    *{margin:0;padding:0}
+    #canvas{display: block;margin: 0 auto;background: #000}
+</style>
+</head>
+<body>
+<audio src="music/喜剧之王 - Here We Are Again.mp3" autoplay controls loop></audio>
+<canvas id="canvas"></canvas>
+<script type="text/javascript" src="js/dom.js"></script>
+<script type="text/javascript">
+var canvas=$("#canvas");
+canvas.width=document.documentElement.clientWidth;
+canvas.height=document.documentElement.clientHeight;
+var ctx=canvas.getContext("2d");
+var mousePos=captureMouse(canvas);
+var spring=0.0001;
+var friction=0.9;
+var gravity=0.2;
+var balls=[];
+var minDist=200;
+function Ball(x,y,r){
+    if(x==undefined)x=50;
+    if(y==undefined)y=50;
+    if(r==undefined)r=50;
+    this.x=x;
+    this.y=y;
+    this.r=r;
+    //移动的向量
+    this.vx=0;
+    this.vy=0;
+}
+
+Ball.prototype.draw=function(){
+    ctx.beginPath();
+    ctx.fillStyle=randomColor();
+    ctx.strokeStyle=randomColor();
+    ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+    ctx.fill();
+};
+for (var i = 0; i < 30; i++) {
+    var ballSize=randomFloorSize(5,20);
+    var ballPosX=randomFloorSize(0,canvas.width);
+    var ballPosY=randomFloorSize(0,canvas.height);
+    var ball=new Ball(ballPosX,ballPosY,ballSize);
+    ball.vx=Math.random()*6-3;
+    ball.vy=Math.random()*6-3;
+    balls.push(ball);
+};
+function draw(ball,i){
+    var ballX=ball.x;
+    var ballY=ball.y;
+    for (var i = 0; i <balls.length; i++) {
+    var ballBX=balls[i].x;
+    var ballBY=balls[i].y;
+    var disX=ballX-ballBX;
+    var disY=ballY-ballBY;
+    var dis=Math.sqrt(Math.abs(disX*disX+disY*disY));
+    //距离小于minDist自动连线
+    if(dis<minDist){
+    ctx.moveTo(ballX,ballY);
+    ctx.lineTo(ballBX,ballBY);
+    ctx.stroke();
+    //拉力限制
+    var ax = disX * spring,
+        ay = disY * spring;
+        ball.vx += ax / ball.r;
+        ball.vy += ay / ball.r;
+        balls[i].vx -= ax / balls[i].r;
+        balls[i].vy -= ay / balls[i].r;
+    }
+    };
+    ball.x+=ball.vx;
+    ball.y+=ball.vy;
+    if(ball.x>canvas.width){
+        ball.x=0;
+    }else if(ball.x<0){
+        ball.x=canvas.width;
+    };
+    if(ball.y>canvas.height){
+        ball.y=0;
+    }else if(ball.y<0){
+        ball.y=canvas.height;
+    };
+    ball.draw();
+}
+
+function moveBall(ball,targetX,targetY){
+    ball.vx+=(targetX-ball.x)*spring;
+    ball.vy+=(targetY-ball.y)*spring;
+    ball.vx*=friction;
+    ball.vy*=friction;
+    ball.x+=ball.vx;
+    ball.y+=ball.vy;
+}
+(function drawFrame(){
+                window.requestAnimationFrame(drawFrame);
+                ctx.clearRect(0,0,canvas.width,canvas.height);
+                balls.forEach(draw);
+            })();
+</script>
+</body>
+</html>

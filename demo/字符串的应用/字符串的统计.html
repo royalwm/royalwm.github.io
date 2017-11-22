@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		body{font-size:12px;font-family:"微软雅黑";color:#666;}
+		textarea{width:500px;height:500px;margin:10px auto 0 auto;display:block;border:2px solid green;padding:10px;font-size:16px;}
+		#show{width:1000px;margin:10px auto;text-align:center;color:red;font-size:20px;}
+	</style>
+ <body>
+		<div class="wrap">
+			<textarea id="textarea" onkeydown="charCount(this)"></textarea>
+			<div id="show"></div>
+		</div>
+		<script type="text/javascript">
+			var textareaDom=document.getElementById("textarea");
+			var showDom=document.getElementById("show");
+			function charCount(obj){
+					var html=textareaDom.innerHTML;
+					var len=html.length;
+					var numCount=0;
+					var fuhao=0;
+					var charCode=0;
+					var chinese=0;
+					for(var i=0;i<len;i++){
+						var asc=html.charCodeAt(i);
+						if(asc!=10&&asc!=32){
+						if(asc>=95&&asc<=122||asc>=65&&asc<=90){
+							charCode++;
+						}else if(asc>=48&&asc<=57){
+							numCount++;
+						}else if(asc>127){
+							chinese++;
+						}else{
+							fuhao++;
+						}
+						}
+					}
+					showDom.innerHTML="数字的个数为："+numCount+"&nbsp;&nbsp;&nbsp; 中文个数为："+chinese+"&nbsp;&nbsp;&nbsp; 字母的个数为："+charCode+" &nbsp;&nbsp;&nbsp;符号的个数为："+fuhao;
+			};
+		</script>
+ </body>
+</html>
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>Examples</title>
+<style type="text/css">
+    *{margin:0;padding:0}
+    #box{width:100px;height:100px;background: red;position: absolute;}
+</style>
+</head>
+<body>
+    <div id="box"></div>
+<script type="text/javascript">
+    function $(id){
+        return document.getElementById(id);
+    }
+    $("box").onmousedown=function(e){
+        var $this=this;
+        var x=e.clientX;
+        var y=e.clientY;
+        var cleft=this.offsetLeft;
+        var ctop=this.offsetTop;
+        document.onmousemove=function(e){
+            var xx=e.clientX;
+            var yy=e.clientY;
+            var moveLeft=xx-x+cleft;
+            var moveTop=yy-y+ctop;
+            $this.style.left=moveLeft+"px";
+            $this.style.top=moveTop+"px";
+        }
+        document.onmouseup=function(){
+            this.onmousedown=null;
+            this.onmousemove=null;
+        }
+
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>时钟</title>
+<style type="text/css">
+    *{margin:0;padding:0}
+    #canvas{position:absolute;top:0;left:0;}
+</style>
+</head>
+<body>
+<canvas id="canvas" width="400" height="400"></canvas>
+<script type="text/javascript" src="js/dom.js"></script>
+<script type="text/javascript">
+var canvas=document.getElementById("canvas");
+canvas.style.left="calc(50% - 200px)";
+canvas.style.top="calc(50% - 200px)";
+clock({id:canvas,background:"red",hoursColor:"red"});
+</script>
+</body>
+</html>

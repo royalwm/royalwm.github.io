@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		body{font-size:12px;font-family:"微软雅黑";color:#666;}
+		#wenzi{width:100px;margin:100px auto;font-size:30px;animation:move 4s ease infinite alternate;color:#000;}
+		.box{width:200px;margin:0 auto;}
+		input{display:block;width:100px;height:30px;color:#000;text-align:center;line-height:30px;float:left;}
+		#send{background:#993;display:block;width:50px;height:30px;color:#000;text-align:center;line-height:30px;float:left;margin-left:10px;}
+		#send:hover{cursor:pointer;transform:scale(1.2);background:#933;}
+		.clear{clear:both;}
+		@keyframes move{
+			from{text-shadow:0px 0px 0px #000;font-weight:400;transform:scale(1.1) rotate(120deg);}
+			50%{text-shadow:1px 1px 1px #00ff00;font-weight:600;transform:scale(1.2) rotate(240deg);}
+			to{text-shadow:2px 2px 2px red;font-weight:700;transform:scale(1.3) rotate(360deg);}
+		}
+	</style>
+ <body>
+		<div class="wrap">
+			<div id="wenzi">文字</div>
+				<div class="box">
+				<input type="text" value="文字" id="shuru" />
+				<span id="send" onclick="send()">确定</span>
+				<div class="clear"></div>
+				</div>
+		</div>
+		<pre style="font-size:20px;color:#000;">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+ &lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="Generator" content="EditPlus®"&gt;
+  &lt;meta name="Author" content=""&gt;
+  &lt;meta name="Keywords" content=""&gt;
+  &lt;meta name="Description" content=""&gt;
+  &lt;title&gt;Document&lt;/title&gt;
+ &lt;/head&gt;
+	&lt;style type="text/css"&gt;
+		*{margin:0;padding:0;}
+		body{font-size:12px;font-family:"微软雅黑";color:#666;}
+		#wenzi{width:100px;margin:100px auto;font-size:30px;animation:move 4s ease infinite alternate;color:#000;}
+		input{display:block;margin:0px 10px 0 600px;width:100px;height:30px;color:#000;text-align:center;line-height:30px;float:left;}
+		#send{background:#993;display:block;width:50px;height:30px;color:#000;text-align:center;line-height:30px;float:left;}
+		#send:hover{cursor:pointer;transform:scale(1.2);background:#933;}
+		@keyframes move{
+			from{text-shadow:0px 0px 0px #000;font-weight:400;transform:scale(1.1) rotate(120deg);}
+			50%{text-shadow:1px 1px 1px #00ff00;font-weight:600;transform:scale(1.2) rotate(240deg);}
+			to{text-shadow:2px 2px 2px red;font-weight:700;transform:scale(1.3) rotate(360deg);}
+		}
+	&lt;/style&gt;
+ &lt;body&gt;
+		&lt;div class="wrap"&gt;
+			&lt;div id="wenzi"&gt;文字&lt;/div&gt;
+			&lt;input type="text" value="文字" id="shuru" /&gt;
+			&lt;span id="send" onclick="send()"&gt;确定&lt;/span&gt;
+		&lt;/div&gt;
+		
+		&lt;script type="text/javascript"&gt;
+				var sendDom=document.getElementById("send");
+				var wenziDom=document.getElementById("wenzi");
+				var shuruDom=document.getElementById("shuru");
+				function send(){
+					var shuruValue=shuruDom.value;
+					wenziDom.innerHTML=shuruValue;
+				}
+		&lt;/script&gt;
+ &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+		<script type="text/javascript">
+				var sendDom=document.getElementById("send");
+				var wenziDom=document.getElementById("wenzi");
+				var shuruDom=document.getElementById("shuru");
+				function send(){
+					var shuruValue=shuruDom.value;
+					wenziDom.innerHTML=shuruValue;
+				}
+		</script>
+ </body>
+</html>
+

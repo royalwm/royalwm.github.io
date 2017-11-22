@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>Examples</title>
+<style type="text/css">
+    *{margin:0;padding:0}
+</style>
+</head>
+<body>
+<table id="racers" border="1" cellspacing="0" style="width:100%">
+    <th>ID</th>
+    <th>Name</th>
+</table>
+<script type="text/javascript">
+var db=openDatabase("db","1.0","my database",2*1024*1024);
+function log(id,name){
+    var row=document.createElement("tr");
+    var idCell=document.createElement("td");
+    var nameCell=document.createElement("td");
+    idCell.textContent=id;
+    nameCell.textContent=name;
+    row.appendChild(idCell);
+    row.appendChild(nameCell);
+    document.getElementById("racers").appendChild(row);
+}
+function doQuery(){
+    db.transaction(function(tx){
+        tx.executeSql("select * from mytable",[],function(tx,results){
+            for (var i = 0; i < results.rows.length; i++) {
+                var item=results.rows.item(i);
+                log(item.id,item.name);
+            };
+        });
+    });
+}
+function initDatabase(){
+    var name=["张三","李四","王五","赵六","aa"];
+    db.transaction(function(tx){
+        //tx.executeSql("drop table mytable");
+        tx.executeSql("CREATE TABLE  mytable(id integer primary key autoincrement,name)");
+        for (var i = 0; i < name.length; i++) {
+            tx.executeSql("insert into mytable (name) values (?)",[name[i]]);
+        };
+        doQuery();
+    });
+}
+db.transaction(function(tx){
+       //
+    });
+initDatabase();
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>canvas画图</title>
+<style type="text/css">
+    *{margin:0;padding:0}
+    #canvas{border:1px solid #ccc;background: #000}
+</style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script type="text/javascript">
+    var canvas=document.getElementById("canvas");
+    canvas.width=document.documentElement.clientWidth;
+    canvas.height=document.documentElement.clientHeight;
+    var ctx=canvas.getContext("2d");
+    ctx.strokeStyle="red";
+    var arrColors=["red","green","blue","gray","pink","origin"];
+    var arr=[];
+    for (var i = 0; i < 6; i++) {
+        var div=document.createElement("div");
+        div.style.width="50px";
+        div.style.height="50px";
+        div.style.marginLeft="2px";
+        div.style.position="absolute";
+        div.style.left=52*i+"px";
+        div.style.background=arrColors[i];
+        div.className="colors";
+        arr.push(div);
+        document.body.append(div);
+        };
+     for (var i = 0; i < 6; i++) {
+        arr[i].onclick=function(){
+            ctx.strokeStyle=this.style.background;
+        }
+        };
+    document.onmousedown=function(e){
+        ctx.beginPath();
+        var ev=e||window.event;
+        var x=ev.clientX||ev.pageX-canvas.offsetLeft;
+        var y=ev.clientY||ev.pageY-canvas.offsetTop;
+
+        ctx.moveTo(x,y);
+        document.onmousemove=function(e){
+        var ev=e||window.event;
+        var x=ev.clientX||ev.pageX-canvas.offsetLeft;
+        var y=ev.clientY||ev.pageY-canvas.offsetTop;
+        ctx.lineTo(x,y);
+        ctx.stroke();
+    }
+        document.onmouseup=function(e){
+        document.onmouseup=null;
+        document.onmousemove=null;
+        }
+    }
+
+
+</script>
+</body>
+</html>

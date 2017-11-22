@@ -1,0 +1,127 @@
+<html>
+
+	<head>
+		<title>flappy_bird</title>
+		<style type="text/css">
+			#canvas {
+				margin: 100px auto;
+				background: #000000;
+				display: block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="canvas"></canvas>
+		<script>
+			var canvas = document.getElementById("canvas");
+			var ctx = canvas.getContext("2d");
+			var cw, ch;
+			loadPicture({
+				bird: 'img/bird.png',
+				land: 'img/land.png',
+				pipeDown: 'img/pipeDown.png',
+				pipeUp: 'img/pipeUp.png',
+				sky: 'img/sky.png'
+			}, function(imgDoms) {
+				cw = canvas.width = imgDoms["sky"].width;
+				ch = canvas.height = imgDoms["sky"].height;
+				var skySpeed = 0;
+				var birdSpeed = 0;
+				var pipeSpeed = 0;
+				var birdAcceleratedSpeed = 0.5;
+				var index = 0;
+				var birdDom = imgDoms["bird"];
+				var landDom = imgDoms["land"];
+				var skyDom = imgDoms["sky"];
+				var pipeUpDom = imgDoms["pipeUp"];
+				var pipeDownDom = imgDoms["pipeDown"];
+				var pipeArr = [];
+				var count = 5;
+				var pipeSpace = 200;
+				var pipeInitDis = 300;
+				var fixHeight = ch - landDom.height - 150;
+				var id = 0;
+				var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+					window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+				var cancelAnimationFrame = window.cancelAnimationFrame || window.mozCancelAnimationFrame;
+
+				for(var i = 0; i < count; i++) {
+					var upHeight = Math.random() * fixHeight + 50;
+					var downHeight = fixHeight - upHeight;
+					var left = pipeInitDis + (pipeUpDom.width + pipeSpace) * i;
+					var hjson = {
+						"upHeight": upHeight,
+						"downHeight": downHeight,
+						"left": left
+					};
+					pipeArr.push(hjson);
+				}
+
+				(function run() {
+					id = requestAnimationFrame(run);
+					skySpeed += 8;
+					ctx.clearRect(0, 0, cw, ch);
+					if(skySpeed == cw) {
+						skySpeed = 0;
+					}
+					//绘画天空
+					ctx.drawImage(skyDom, 0 - skySpeed, 0, cw, ch);
+					ctx.drawImage(skyDom, cw - skySpeed, 0, cw, ch);
+					//绘制管道
+
+					pipeSpeed += 2;
+					for(var i = 0; i < pipeArr.length; i++) {
+
+						if(pipeArr[i].left - pipeSpeed < -pipeUpDom.width) {
+							var upHeight = Math.random() * fixHeight + 50;
+							var downHeight = fixHeight - upHeight;
+							pipeArr[i].left = pipeInitDis + (pipeUpDom.width + pipeSpace) * (count++);
+							pipeArr[i].upHeight = upHeight;
+							pipeArr[i].downHeight = downHeight;
+						}
+						ctx.drawImage(pipeUpDom, pipeArr[i].left - pipeSpeed, ch - landDom.height - pipeArr[i].upHeight, pipeUpDom.width, pipeArr[i].upHeight);
+						ctx.drawImage(pipeDownDom, pipeArr[i].left - pipeSpeed, 0, pipeUpDom.width, pipeArr[i].downHeight);
+						if((ch - landDom.height < birdSpeed) || (pipeArr[i].left - pipeSpeed < birdDom.width / 3) && (ch - landDom.height - pipeArr[i].upHeight -20< birdSpeed || pipeArr[i].downHeight-4 > birdSpeed)) {
+							ctx.drawImage(birdDom, birdDom.width / 3 * index, 0, birdDom.width / 3, birdDom.height, 0, birdSpeed, birdDom.width / 3, birdDom.height);
+							cancelAnimationFrame(id);
+						}
+					}
+					//绘制小鸟
+					birdSpeed += birdAcceleratedSpeed;
+					birdAcceleratedSpeed += 0.2;
+					if(index == 3) index = 0;
+					ctx.drawImage(birdDom, birdDom.width / 3 * index, 0, birdDom.width / 3, birdDom.height, 0, 0 + birdSpeed, birdDom.width / 3, birdDom.height);
+					index++;
+					window.addEventListener("click", function() {
+						birdAcceleratedSpeed = -3;
+					});
+
+					//绘制大地
+					ctx.drawImage(landDom, 0 - skySpeed, ch - landDom.height, cw, landDom.height);
+					ctx.drawImage(landDom, cw - skySpeed, ch - landDom.height, cw, landDom.height);
+					
+				})();
+			});
+
+			function loadPicture(imgSrc, callback) {
+				var imgDom, index = 0,
+					imgLenght = 0;
+				var imgData = {};
+				for(var key in imgSrc) {
+					imgDom = new Image();
+					imgLenght++;
+					imgDom.onload = function() {
+						index++;
+						if(imgLenght <= index) {
+							callback(imgData);
+						}
+					}
+					imgDom.src = imgSrc[key];
+					imgData[key] = imgDom;
+				}
+			}
+		</script>
+	</body>
+
+</html>

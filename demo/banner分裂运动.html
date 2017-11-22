@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link rel="shortcut icon"  href="images/1.jpg">
+<title>Examples</title>
+<style type="text/css">
+    *{margin:0;padding:0}
+    #wrap{position: relative;height: 280px;width: 600px;overflow: hidden;}
+    #moreImg li{float: left;position: absolute;}
+    #wrap .ear{position: absolute;top:calc(50% - 40px);width: 40px;height: 80px;z-index: 99;font-size: 40px;text-align: center;line-height: 80px}
+    #wrap .rear{right: 0;}
+    #wrap:hover .lear{background: red;}
+    #wrap:hover .rear{background: red;right: 0;}
+     #wrap .ear:hover{background: rgba(255,0,0,.5);cursor:pointer;}
+     #clipImg{width: inherit;border:1px solid red;height: 280px;position: absolute;z-index: 99;-webkit-transform-style:preserve-3d;
+        transform-style:preserve-3d;}
+</style>
+</head>
+<body>
+<div id="wrap">
+<ul id="moreImg">
+    <li style="z-index:5"><img src="images/1.jpg" height="280" width="600"></li>
+    <li style="z-index:4"><img src="images/2.jpg" height="280" width="600"></li>
+    <li style="z-index:3"><img src="images/3.jpg" height="280" width="600"></li>
+    <li style="z-index:2"><img src="images/4.jpg" height="280" width="600"></li>
+    <li style="z-index:1"><img src="images/5.jpg" height="280" width="600"></li>
+</ul>
+<ul id="clipImg"></ul>
+<div class="ear lear" onclick="prevImg(this)"><</div>
+<div class="ear rear" onclick="nextImg(this)">></div>
+</div>
+<script type="text/javascript">
+var clipImgDom=document.getElementById("clipImg");
+var wrapDom=document.getElementById("wrap");
+var moreImgDom=document.getElementById("moreImg");
+var w="60";
+var h="40";
+var cindex=1;
+var timer=null;
+var width=window.getComputedStyle?window.getComputedStyle(wrapDom,null)["width"]:clipImgDom.parentElement.currentStyle["width"];
+var height=window.getComputedStyle?window.getComputedStyle(clipImgDom.parentElement,null)["height"]:wrapDom.wrapDomcurrentStyle["height"];
+var cols=Math.floor(parseInt(width)/w);
+var rows=Math.floor(parseInt(height)/h);
+function move(num){
+    var arr=[];
+    for (var i = 0; i < rows; i++) {
+    for (var j = 0; j < cols; j++) {
+        var divDom=document.createElement("div");
+        divDom.style.width=w+"px";
+        divDom.style.height=h+"px";
+        divDom.style.float="left";
+        divDom.style.backgroundImage="url('images/"+num+".jpg')";
+        divDom.style.backgroundSize="600px 280px";
+        divDom.style.backgroundPosition=-j*w+"px "+-i*h+"px";
+        clipImgDom.appendChild(divDom);
+        arr.push(divDom);
+    }
+    };
+ timer=setInterval(function(){
+    var index=Math.floor(Math.random()*arr.length);
+    arr[index].style.transform="perspective(30px)  rotateY(180deg) translateY(50px) translateZ(20px)";
+    arr[index].style.opacity= "0";
+    arr[index].style.transition = "all 1.5s ease";
+    arr.splice(index,1);
+    if(arr.length==0){
+        clearInterval(timer);
+    }
+},30);
+}
+
+function nextImg(obj){
+clearInterval(timer);
+clipImgDom.innerHTML="";
+if(cindex>=moreImgDom.children.length)return;
+moreImgDom.children[cindex-1].style.display="none";
+move(cindex);
+cindex++;
+}
+function prevImg(obj){
+clearInterval(timer);
+clipImgDom.innerHTML="";
+if(cindex<=1)return;
+moreImgDom.children[cindex-2].style.display="block";
+move(cindex);
+cindex--;
+}
+</script>
+</body>
+</html>

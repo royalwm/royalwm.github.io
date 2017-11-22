@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>3dbanner</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			ul li{list-style: none;}
+			.content {
+				width: 780px;
+				height: 330px;
+				margin: 330px auto 0;
+				perspective: 1000px;
+			}
+			.content li {
+				cursor: pointer;
+				transform-origin: center center -165px;
+				transform-style: preserve-3d;
+				width: 30px;
+				height: inherit;
+				position: absolute;
+			}
+			
+			.content li a {
+				position: absolute;
+				background: #ccc;
+				width: inherit;
+				height: inherit;
+				display: block;
+			}
+			
+			.content li a:nth-child(1) {
+				background: url("img/1.jpg");
+			}
+			
+			.content li a:nth-child(2) {
+				top: -100%;
+				background: url("img/2.jpg");
+				transform-origin: bottom;
+				transform: rotateX(90deg);
+			}
+			
+			.content li a:nth-child(3) {
+				transform: translateZ(-330px) rotateX(180deg);
+				background: url("img/3.jpg");
+			}
+			
+			.content li a:nth-child(4) {
+				top: 100%;
+				background: url("img/4.jpg");
+				transform-origin: top;
+				transform: rotateX(-90deg);
+			}
+			
+			.content li span:nth-of-type(1) {
+				transform-origin: right;
+				transform: rotateY(-90deg);
+				position: absolute;
+				left: -330px;
+				background: purple;
+				width: 330px;
+				height: inherit;
+			}
+			
+			.content li span:nth-of-type(2) {
+				transform-origin: left;
+				transform: rotateY(90deg);
+				position: absolute;
+				left: 100%;
+				background: blue;
+				width: 330px;
+				height: inherit;
+			}
+			
+			.selectImg {
+				width: 178px;
+				height: 30px;
+				margin: 40px auto;
+			}
+			
+			.selectImg li {
+				cursor: pointer;
+				line-height: 30px;
+				text-align: center;
+				border-radius: 4px;
+				background: #CCCCCC;
+				margin-left: 2px;
+				width: 40px;
+				border: 1px solid #000;
+				height: inherit;
+				float: left;
+			}
+			
+			.selectImg .active {
+				color: darkgoldenrod;
+				background: #000000;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<ul class="content">
+			</ul>
+			<ul class="selectImg">
+				<li class="active">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			window.onload = function() {
+				var contentDom = document.getElementsByClassName("content")[0];
+				var cssDom = document.getElementsByTagName("style")[0];
+				var html = "";
+				var scss = "";
+				var index = 0;
+				var len = Math.floor(contentDom.clientWidth / 30);
+				for(var i = 0; i < len; i++) {
+					i > len / 2 ? index-- : index++;
+					html += '<li class="c_li">' +
+						'<a href="javascript:void(0);"></a>' +
+						'	<a href="javascript:void(0);"></a>' +
+						'	<a href="javascript:void(0);"></a>' +
+						'	<a href="javascript:void(0);"></a>' +
+						'	<span></span>' +
+						'	<span></span>' +
+						'</li>';
+					scss += '.content li:nth-child(' + (i + 1) + '){left: ' + i * 30 + 'px;top: 0;z-index:' + index + '}';
+					scss += '.content li:nth-child(' + (i + 1) + ') a{background-position:' + (-i * 30) + 'px 0}';
+
+				}
+				contentDom.innerHTML += html;
+				cssDom.innerHTML += scss;
+				var selectDom = document.getElementsByClassName("selectImg")[0];
+				var sChild = selectDom.children;
+				var nowIndex = 0;
+				var conChild = contentDom.children;
+				for(var i = 0; i < sChild.length; i++) {
+					sChild[i].index = i;
+					sChild[i].onclick = function() {
+						sChild[nowIndex].className = "";
+						this.className += " active";
+						nowIndex = this.index;
+						//切换图片
+						for(var i = 0; i < len; i++) {
+							conChild[i].style.transform = "rotateX(" + (90 * nowIndex) + "deg)";
+							conChild[i].style.transition = "all 2s " + (i * 50) + "ms ease";
+
+						}
+					}
+				}
+			}
+		</script>
+	</body>
+
+</html>

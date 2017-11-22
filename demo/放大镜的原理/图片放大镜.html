@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		body{font-size:14px;font-family:"微软雅黑";color:#666;}
+		a{text-decoration:none;display:block;}
+		ul li{list-style:none;}
+		#box {width:1000px;margin:100px auto;}
+		#box #b_left{float:left;position:relative;overflow:hidden;}
+		#box #b_left .shadow{width:200px;height:200px;background:transparent;position:absolute;top:0;left:0;}
+		#box #b_left #floatDiv{width:100px;height:100px;background:red;position:absolute;top:0;left:0;opacity:0.5;filter:alpha(opacity=50);display:none;}
+		#box #b_right{float:left;float:left;position:relative;}
+		#b_right .title{color:#000;font-size:18px;width:300px;padding:20px;;}
+		#b_right .price{width:300px;overflow:hidden;padding:10px;background:rgba(255,192,203,0.5);}
+		#b_right .goods_desc .jg{font-size:14px;color:#999;float:left;margin-top:10px;height:14px;}
+		#b_right .goods_desc .yj{font-size:16px;margin-top:7px;display:block;text-decoration:line-through;margin-left:60px;}
+		#b_right .goods_desc .xj{font-size:18px;color:red;font-weight:800;display:block;margin-top:8px;margin-left:60px;}
+		#shadow{background:#000;margin-left:10px;z-index:999;display:none;position:absolute;top:0;left:0px;width:500px;height:500px;overflow:hidden;border:1px solid red}
+		#shadow img{position:absolute;left:0;top:0;}
+	</style>
+ <body bgcolor="#fff">
+		<div id="box">
+			<div id="b_left">
+				<div class="img"><img src="images/small.jpg" width="200" height="200"/></div>
+				<div id="floatDiv"></div>
+				<div class="shadow"></div>
+			</div>
+			<div id="b_right">
+				<div class="title">环球夏季透气网鞋女鞋韩版低帮运动帆布鞋女休闲鞋学生系带跑步鞋
+				<div class="goods_desc">
+					<div class="goods_title"><img src="images/goods_title.png" width="300"/></div>
+					<div class="price">
+						<div class="jg">价格</div><span class="yj">¥298.00</span>
+						<div class="jg">淘宝价</div><span class="xj">¥58.00</span>
+					</div>
+				</div>
+				</div>
+				<div id="shadow" ><img src="images/big.jpg"/></div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			window.onload=function(){
+				var floatDom=dom("floatDiv");
+				var bLDom=dom("b_left");
+				var shadowDom=dom("shadow");
+				var imgDom=shadowDom.children[0];
+				bLDom.onmouseover=function(){
+					shadowDom.style.display="block";
+					floatDom.style.display="block";
+					this.style.cursor="move";
+				};
+				bLDom.onmouseout=function(){
+					floatDom.style.display="none";
+					shadowDom.style.display="none";
+				};
+				bLDom.onmousemove=function(e){
+					var ev=e||window.event;
+					var x=(ev.clientX||ev.pageX)-this.offsetLeft;
+					var y=(ev.clientY||ev.pageY)-this.offsetTop;
+					var xx=x-floatDom.offsetWidth/2;
+					var yy=y-floatDom.offsetHeight/2;
+					var maxLeft=this.offsetWidth-floatDom.offsetWidth;
+					var maxTop=this.offsetHeight-floatDom.offsetHeight;
+					if(xx<=0)xx=0;
+					if(yy<=0)yy=0;
+					if(xx>=maxLeft)xx=maxLeft;
+					if(yy>=maxTop)yy=maxTop;
+					floatDom.style.left=xx+"px";
+					floatDom.style.top=yy+"px";
+					var xbit=xx/maxLeft;
+					var ybit=yy/maxTop;
+					imgDom.style.left=(imgDom.offsetWidth-shadowDom.offsetWidth)*-xbit+"px";
+					imgDom.style.top=(imgDom.offsetHeight-shadowDom.offsetHeight)*-ybit+"px";
+				};
+			};
+			function dom(id){
+				return document.getElementById(id);
+			};
+		</script>
+ </body>
+</html>
+

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>右键菜单</title>
+<style type="text/css">
+    *{margin:0;padding:0}
+    ul li{list-style: none;}
+    #menu{display: table;display: none;position: absolute;}
+    #menu li{width: 100px;border: 1px solid #ccc;line-height: 40px}
+    #menu li:hover{background: #ccc;cursor: pointer;}
+</style>
+</head>
+<body>
+<ul id="menu" align="center">
+    <li>菜单1</li>
+    <li>菜单2</li>
+    <li>菜单3</li>
+    <li>菜单4</li>
+</ul>
+<script type="text/javascript">
+    var menuDom=document.getElementById("menu");
+    document.addEventListener("contextmenu",function(e){
+        e.preventDefault();
+        menuDom.style.display="block";
+        var e=e||window.event;
+        var x=e.clientX||e.pageX;
+        var y=e.clientY||e.pageY;
+        menuDom.style.left=x+"px";
+        menuDom.style.top=y+"px";
+        var child=menuDom.children;
+        for (var i = 0; i < child.length; i++) {
+            child[i].onclick=function(e){
+                if(e.target==this){
+                alert(this.innerHTML)
+                menuDom.style.display="none";
+                }
+            }
+        };
+        document.onclick=function(){
+            if(e.target==this){
+                menuDom.style.display="none";
+                }
+        }
+    });
+</script>
+</body>
+</html>

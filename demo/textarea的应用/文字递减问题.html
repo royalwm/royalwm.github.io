@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		body{font-size:14px;font-family:"微软雅黑";color:#666;}
+		a{text-decoration:none;display:block;}
+		ul li{list-style:none;}
+		#box{width:640px;margin:100px auto;position:relative;}
+		textarea {width:600px;height:200px;padding:20px;font-size:18px;}
+		#send{width:80px;height:30px;background:#999;text-align:center;line-height:30px;border-radius:10%;float:right;margin-top:10px;cursor:pointer;transition:all 1s ease;}
+		#send:hover{background:#990;transition:all 1s ease;}
+		#mood{position:absolute;bottom:-35px;right:130px;width:40px;background:#ccc;text-align:center;border-radius:30%;color:#000;cursor:pointer;}
+		#mood:hover{background:green;}
+		#sendShadow{width:60px;height:30px;background:red;border-radius:10%;position:absolute;bottom:-40px;right:12px;z-index:-1;}
+		.gy{width:80px;height:30px;background:red;border-radius:10%;position:absolute;bottom:-40px;right:0px;z-index:-1;animation:move1 1s ease alternate infinite;}
+		#num{width:150px;height:20px;position:absolute;bottom:10px;right:10px;color:#999;}
+		#num span{color:red;font-size:16px;}
+		#content{padding:20px;font-size:20px;color:#000;}
+		#content div{margin:10px;background:#993300;}
+		#bqlist{width:250px;background:#999;position:absolute;bottom:130px;right:450px;display:none;}
+		#bqlist li{float:left;}
+		#bqlist li:hover{opacity:0.7;}
+		@keyframes move{
+			from{transform:scale(1.6);background:#999;opacity:0.8;}
+			50%{transform:scale(1.8);background:#990;opacity:0.8;}
+			to{transform:scale(2);background:#990;opacity:0.5;}
+			}
+		@keyframes move1{
+			from{transform:scale(1);background:#999;opacity:0.8;}
+			to{transform:scale(1.2);background:#999;opacity:0.5;
+		}
+	</style>
+ <body>
+		<div id="box">
+			<textarea id="comment" placeholder="请输入文字。。。" maxlength="100"></textarea>
+			<div id="mood" onclick="mood()">表情</div>
+			<div id="send" onclick="send()">提交</div>
+			<div class="gy"></div>
+			<div id="num">还可以输入<span id="snum" title="100">100</span>个字！</div>
+		</div>
+		<div id="content"></div>
+		<ul id="bqlist">
+			<li text="[微笑]" type="0"><img title="[微笑]" src="http://s9.ui.cn/uiem48/uiem001.svg" style="cursor:pointer; position:relative;"></li>
+			<li text="[憨笑]" type="1"><img title="[憨笑]" src="http://s9.ui.cn/uiem48/uiem002.svg" style="cursor:pointer; position:relative;"></li>
+			<li text="[愉快]" type="3"><img title="[愉快]" src="http://s9.ui.cn/uiem48/uiem003.svg" style="cursor:pointer; position:relative;"></li>
+			<li text="[可怜]" type="4"><img title="[可怜]" src="http://s9.ui.cn/uiem48/uiem004.svg" style="cursor:pointer; position:relative;"></li>
+			<li text="[调皮]" type="5"><img title="[调皮]" src="http://s9.ui.cn/uiem48/uiem005.svg" style="cursor:pointer; position:relative;"></li>
+			<li text="[大哭]" type="6"><img title="[大哭]" src="http://s9.ui.cn/uiem48/uiem006.svg" style="cursor:pointer; position:relative;"></li>
+			<li text="[痛苦]" type="7"><img title="[痛苦]" src="http://s9.ui.cn/uiem48/uiem007.svg" style="cursor:pointer; position:relative;"></li>
+			<li text="[偷笑]" type="8"><img title="[偷笑]" src="http://s9.ui.cn/uiem48/uiem008.svg" style="cursor:pointer; position:relative;"></li>
+			<li text="[坏笑]" type="9"><img title="[坏笑]" src="http://s9.ui.cn/uiem48/uiem009.svg" style="cursor:pointer; position:relative;"></li>
+			<li text="[伤心]" type="10"><img title="[伤心]" src="http://s9.ui.cn/uiem48/uiem010.svg" style="cursor:pointer; position:relative;"></li>
+		</ul>
+		<script type="text/javascript">
+			window.onload=function(){
+					storage();
+					dom("comment").onkeyup=function(){
+					var comment=dom("comment");
+					var vlen=comment.value.length;
+					var numDom=dom("snum");
+					var num=numDom.innerHTML*1;
+					var total=numDom.title;
+					var slen=total-vlen;
+					numDom.innerHTML=slen;
+					var cvalue=dom("comment").value;
+					if(cvalue){
+						if(localStorage)localStorage.setItem("message",cvalue);
+				};
+				//enter发送
+				document.onkeyup=function(e){
+					var ev=e||window.event;
+					var code=e.codeKey||e.which;
+					if(code==13){
+						var arr=[];
+						send();
+						var sendShadow=document.createElement("div");
+						sendShadow.id="sendShadow";
+						sendShadow.style.animation="move 1s ease";
+						dom("box").appendChild(sendShadow);
+						arr.push(sendShadow);
+						if(arr.length>10)arr=[];
+					}
+				};
+			};
+			//数据的缓存
+			function storage(){
+					if(localStorage)var html=localStorage.getItem("message");
+					if(html){
+					comment.value=html;
+					}
+				}
+			};
+			function mood(){
+				dom("bqlist").style.display="block";
+				var bqli=dom("bqlist").children;
+				var arr=[].slice.call(bqli);
+				arr.forEach(function(liDom){
+					liDom.onclick=function(){
+						var text=this.getAttribute("text");
+						dom("comment").value+=text;
+						dom("comment").focus();
+						var comment=dom("comment");
+					var vlen=comment.value.length;
+					var numDom=dom("snum");
+					var num=numDom.innerHTML*1;
+					var total=numDom.title;
+					var slen=total-vlen;
+					numDom.innerHTML=slen;
+					};
+				});
+			};
+			//提交函数
+			function send(){
+					var comment=dom("comment");
+					var val=comment.value;
+					var bqli=dom("bqlist").children;
+					var arr=[].slice.call(bqli);
+					for(var i=0;i<arr.length;i++){
+						var text=arr[i].getAttribute("text");
+						var html=arr[i].innerHTML;
+						val=val.replace(text,html);
+					}
+					var content=dom("content");
+					var contentChild=document.createElement("div");
+					contentChild.innerHTML=val;
+					content.insertBefore(contentChild,content.firstElementChild);
+					comment.innerHTML="";
+					comment.focus();
+					var numDom=dom("snum");
+					numDom.innerHTML=numDom.title;
+					dom("bqlist").style.display="none";
+				};
+				//id获取
+			function dom(id){
+				return document.getElementById(id);
+			};
+		</script>
+ </body>
+</html>
+

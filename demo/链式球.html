@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>链式球</title>
+<style type="text/css">
+    *{margin:0;padding:0}
+    #canvas{display: block;margin: 0 auto;background: #000}
+</style>
+</head>
+<body>
+<audio src="music/喜剧之王 - Here We Are Again.mp3" autoplay controls loop></audio>
+<canvas id="canvas"></canvas>
+<script type="text/javascript" src="js/dom.js"></script>
+<script type="text/javascript">
+var canvas=$("#canvas");
+canvas.width=document.documentElement.clientWidth;
+canvas.height=document.documentElement.clientHeight;
+var ctx=canvas.getContext("2d");
+var mousePos=captureMouse(canvas);
+var spring=0.01;
+var friction=0.9;
+var gravity=0.2;
+var balls=[];
+function Ball(x,y,r){
+    if(x==undefined)x=50;
+    if(y==undefined)y=50;
+    if(r==undefined)r=50;
+    this.x=x;
+    this.y=y;
+    this.r=r;
+    //移动的向量
+    this.vx=0;
+    this.vy=0;
+}
+
+Ball.prototype.draw=function(){
+    ctx.beginPath();
+    ctx.fillStyle=randomColor();
+    ctx.strokeStyle=randomColor();
+    ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+    ctx.fill();
+};
+for (var i = 0; i < 10; i++) {
+    var ball=new Ball(canvas.width/2,canvas.height/2,50);
+    balls.push(ball);
+};
+function draw(ball,i){
+    if(i==0){
+    moveBall(ball,mousePos.x,mousePos.y);
+    ctx.moveTo(ball.x,ball.y);
+    }else{
+    moveBall(ball,balls[i-1].x,balls[i-1].y);
+    ctx.moveTo(balls[i-1].x,balls[i-1].y);
+    }
+    ctx.lineTo(ball.x,ball.y);
+    ctx.stroke();
+    ball.draw();
+}
+function moveBall(ball,targetX,targetY){
+    ball.vx+=(targetX-ball.x)*spring;
+    ball.vy+=(targetY-ball.y)*spring;
+    ball.vx*=friction;
+    ball.vy*=friction;
+    ball.x+=ball.vx;
+    ball.y+=ball.vy;
+}
+(function drawFrame(){
+                window.requestAnimationFrame(drawFrame);
+                ctx.clearRect(0,0,canvas.width,canvas.height);
+                balls.forEach(draw);
+            })();
+</script>
+</body>
+</html>

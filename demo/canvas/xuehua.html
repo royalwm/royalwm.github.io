@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		body{font-size:12px;font-family:"微软雅黑";color:#666;background:url("images/xuehua2.jpg") no-repeat fixed top left;background-size:cover;}
+		div{float:left;background:#960;color:#fff;width:40px;height:20px;line-height:20px;}
+		.shezhi2{margin-left:10px;}
+		#geshu1{width:40px;height:20px;line-height:20px;float:left;display:block;border:none;}
+		#daxiao1{width:40px;height:20px;line-height:20px;float:left;display:block;border:none;margin-right:10px;}
+		#sudu1{width:40px;height:20px;line-height:20px;float:left;display:block;border:none;}
+		#tijiao{width:40px;height:20px;float:left;text-align:center;line-height:20px;color:#ffffff;background:#960}
+		#tijiao:hover{background:#990;cursor:pointer;}
+	</style>
+ <body >
+		<div class="shezhi1">个数</div>
+		<input type="text" id="geshu1" value="200"/>
+		<div class="shezhi2">大小</div>
+		<input type="text" id="daxiao1" value="1"/>
+		<div class="shezhi3">速度</div>
+		<input type="text" id="sudu1" value="10"/>
+		<div id="tijiao"  >确定</div>
+		<audio src="mp3/xuehua.mp3" autoplay  loop></audio>
+		<canvas id="canvas"></canvas>
+
+		<script type="text/javascript">
+				var canvas=document.getElementById("canvas");
+				var geshu1=document.getElementById("geshu1");
+				var daxiao1=document.getElementById("daxiao1");
+				var sudu1=document.getElementById("sudu1");
+				var tijiao=document.getElementById("tijiao");
+				var ge=geshu1.value;
+				var da=daxiao1.value;
+				var su=sudu1.value;
+				 var timer=null;
+
+				var ctx=canvas.getContext("2d");
+				var ws=window.screen;
+				var w=ws.width;
+				var h=ws.height;
+				 canvas.width=w;
+				 canvas.height=h;
+				 var snow=[];
+				 var geshu=ge;
+				 var daxiao=da;
+				 var v=su;
+
+				 for(var i=0;i<geshu;i++){
+						snow.push({
+						x:Math.random()*w,
+						y:Math.random()*h,
+						r:Math.random()+daxiao
+						})
+				 }
+				 tijiao.onclick=function(){
+					clearInterval(timer);
+					geshu=geshu1.value;
+					da=daxiao1.value;
+					v=sudu1.value;
+					snow=[];
+					 for(var i=0;i<geshu;i++){
+						snow.push({
+						x:Math.random()*w,
+						y:Math.random()*h,
+						r:Math.random()+parseInt(da)
+						})
+				 }
+				 timer=setInterval(draw, 15);
+				}
+				function draw(){
+					ctx.shadowColor = "#fff";
+					ctx.shadowOffsetX = 0;
+					ctx.shadowOffsetY = 0;
+					ctx.shadowBlur = 10;
+					ctx.fillStyle="rgba(255,255,255,0.8)";
+					ctx.clearRect(0,0,w,h);
+
+					for(var i=0;i<snow.length;i++){
+					ctx.beginPath();
+					ctx.strokeStyle="#ffffff";
+					var s=snow[i];
+					ctx.arc(s.x,s.y,s.r,0,2*Math.PI);
+					ctx.stroke();
+					ctx.fill();
+					}
+					update();
+
+				}
+				function update(){
+					for(var i=0;i<geshu;i++){
+						var p=snow[i];
+						p.y=p.y+Math.random()*v;
+						if(p.y>h){
+						p.y=0;
+						}
+					}
+				}
+					timer=setInterval(draw, 15);
+		</script>
+
+ </body>
+</html>
+

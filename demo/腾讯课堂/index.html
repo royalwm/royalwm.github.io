@@ -1,0 +1,1347 @@
+<!doctype html>
+<html>
+	<head>
+		<!--申明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8(国际编码)-->
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<title>腾讯课堂</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="小于等于80字">
+
+		<!--js/css-->
+		<style type="text/css">
+			*{margin:0;padding:0;}
+			body{font-size:12px;font-family:"微软雅黑";color:#666;}
+			/*首页头部开始*/
+			.header{width:1200px;height:90px;margin:0 auto;padding-top:10px}
+			.header h1{float:left;}
+			.header .h_search{float:left;margin-left:220px;}
+			.header .h_search .search{position:relative;}
+			.header .h_search .search{border:2px solid #36C;width:450px;height:36px;float:left;}
+			.header .h_search .search .s_text{width:390px;height:34px;line-height:30px;font-size:12px;font-family:"微软雅黑";color:#666;border:0;padding:2px 0 0 10px;}
+			.header .h_search .search a{display:block;width:58px;height:36px;background:#188eee;position:absolute;top:0;right:0;}
+			.header .h_search .search a:hover{background:#069;}
+			.header .h_search .search a span{margin:8px 18px;display:block;float:left;}
+			.header .login .in{margin-right:100px;}
+			.header .login .help{margin-right:10px;}
+			.header .login a{text-decoration:none;font-size:14px;color:#000;float:right;line-height:40px;display:block;width:50px;background:#06F;text-align:center;}
+			.header .login a:hover{background:#09F;}
+			/*首页头部结束*/
+
+			/*banner start*/
+			.banner{width:100%;height:350px;}
+			.banner .b_adv{width:1200px;height:50px;margin:0 auto;position:relative;}
+			.banner .b_adv a{position:absolute;left:220px;top:0px;}
+			.banner .b_bg{background:#4a4d9c;z-index:1;}
+			.banner .b_bg .b_con{width:1200px;height:300px;margin:0 auto;position:relative;z-index:2;}
+
+			/*menu start*/
+			.banner .b_bg .b_con
+			.menu{width:220px;height:476px;background:#0477c0;position:absolute;top:-50px;left:0px;z-index:3;}
+			.banner .b_bg .b_con .menu ul li{border-bottom:1px solid #09C;list-style:none;height:70px;position:relative;}
+			.banner .b_bg .b_con .menu ul li:hover{background:#069;}
+			.banner .b_bg .b_con .menu ul .m_all{background:#188eee;height:50px;}
+			.banner .b_bg .b_con .menu ul .m_all a span{width:50px;height:50px;display:block;background:url("images/icon-hamburg.png") no-repeat center;float:left;}
+			.banner .b_bg .b_con .menu ul .m_all a{display:block;height:50px;line-height:50px;font-size:14px;text-decoration:none;color:#fff;font-weight:bold;}
+			.banner .b_bg .b_con .menu ul .m_all a:hover{text-decoration:underline;}
+			.banner .b_bg .b_con .menu ul li h2 a{text-decoration:none;color:#fff;font-size:14px;}
+			.banner .b_bg .b_con .menu ul h2{padding:8px 0 6px 15px;}
+			.banner .b_bg .b_con .menu ul h2 a:hover{text-decoration:underline;}
+			.banner .b_bg .b_con .menu ul h2 i{width:6px;height:12px;display:block;background:url("images/icon.png") no-repeat -147px -163px;float:right;margin:8px 10px 0 0;}
+			.banner .b_bg .b_con .menu ul h3{padding-left:15px;}
+			.banner .b_bg .b_con .menu ul h3 a{text-decoration:none;color:#fff;font-size:12px;font-weight:500;}
+			.banner .b_bg .b_con .menu ul h3 a:hover{text-decoration:underline;color:#DEDEDE;}
+			.banner .b_bg .b_con .menu ul li .show_menu{width:46px;position:absolute;top:0;left:220px;display:none;z-index:4;opacity:0.8;filter:alpha(opacity=80);}
+			.banner .b_bg .b_con .menu ul li .show{display:block;}
+			.banner .b_bg .b_con .menu ul li .show_menu .m_caidan{color:#fff;background:#E8E8E8;width:300px;height:404px;border:1px solid #CCF;}
+			.banner .b_bg .b_con .menu ul li .show_menu .m_caidan dt{color:#06C;width:80px;height:30px;padding:10px 0 0px 5px;font-size:16px;font-weight:bold;}
+			.banner .b_bg .b_con .menu ul li .show_menu .m_caidan dd{border-bottom:1px solid #CC9;height:60px;}
+			.banner .b_bg .b_con .menu ul li .show_menu dl dd a{color:#000;text-decoration:none;padding:10px 0px 10px 10px;display:block;float:left;}
+			.banner .b_bg .b_con .menu ul li .show_menu dl dd a:hover{text-decoration:underline;}
+			/*end menu*/
+
+			/*focus start*/
+			.banner .b_bg .b_con .focus{width:760px;height:300px;background:#039;margin-left:220px;float:left;z-index:2;overflow:hidden;position:relative;}
+			.banner .b_bg .b_con .focus .f_pic li{list-style:none;}
+			.banner .b_bg .b_con .focus .f_btn{position:absolute;bottom:0px;left:300px;}
+			.banner .b_bg .b_con .focus .f_btn ul{background:#663;display:inline-block;border-radius:6px;opacity:0.5;filter:alpha(opacity=50);}
+			.banner .b_bg .b_con .focus .f_btn ul li{width:10px;height:10px;border-radius:5px;border:1px solid #fff;list-style:none;float:left;margin:4px;}
+			.banner .b_bg .b_con .focus .f_btn ul .no{background:#fff;}
+			.banner .b_bg .b_con .focus .f_ear{width:46px;height:70px;display:none;background:url("images/icon.png") no-repeat;position:absolute;}
+			.banner .b_bg .b_con .focus:hover .f_ear{display:block;cursor:pointer;}
+			.banner .b_bg .b_con .focus .pre{left:10px;top:110px;background-position:-74px 0;}
+			.banner .b_bg .b_con .focus .next{right:10px;top:110px;background-position:-123px 0;}
+			.banner .b_bg .b_con .focus .pre:hover{background-position: -171px 0px;}
+			.banner .b_bg .b_con .focus .next:hover{background-position: 0px -57px;}
+			/*end focus*/
+			/*tools start*/
+			.banner .b_bg .b_con .tools{width:220px;height:260px;float:right;position:absolute;top:20px;right:5px;opacity:0.6;filter:alpha(opacity=60);background:#000;margin-left:0;}
+			.banner .b_bg .b_con .tools .t_news{width:220px;height:150px;margin:10px 10px;}
+			.banner .b_bg .b_con .tools .t_news ul{margin-left:20px;}
+			.banner .b_bg .b_con .tools .t_news ul li{list-style:square;padding:4px;line-height:15px;}
+			.banner .b_bg .b_con .tools .t_news ul li a{text-decoration:none;color:#fff;font-size:14px;}
+			.banner .b_bg .b_con .tools .t_news ul li a:hover{text-decoration:underline;}
+			.banner .b_bg .b_con .tools .t_news .t_tool{width:210px;height:110px;background:#309;margin-top:15px;position:relative;}
+			.banner .b_bg .b_con .tools .t_news .t_tool .down_qq{width:110px;height:110px;background:#606;display:block;text-align:center;font-size:12px;color:#fff;text-decoration:none;float:left;}
+			.banner .b_bg .b_con .tools .t_news .t_tool .down_qq i{width:44px;height:44px;display:block;background:url("images/icon.png") no-repeat -123px -73px;position:absolute;top:10px;left:32px;}
+			.banner .b_bg .b_con .tools .t_news .t_tool .down_qq .d_all{position:absolute;top:55px;left:32px;}
+			.banner .b_bg .b_con .tools .t_news .t_tool .down_qq .desc{font-size:16px;}
+			.banner .b_bg .b_con .tools .t_news .t_tool .down_qq:hover{background:#300;}
+			.banner .b_bg .b_con .tools .t_news .t_tool .sys{width:100px;height:110px;background:#33C;float:left;position:relative;cursor:pointer;}
+			.banner .b_bg .b_con .tools .t_news .t_tool .sys:hover{background:#300;}
+			.banner .b_bg .b_con .tools .t_news .t_tool .sys i{width:44px;height:44px;display:block;background:url("images/icon.png") no-repeat -172px -73px;position:absolute;top:10px;left:32px;}
+			.banner .b_bg .b_con .tools .t_news .t_tool .sys .s_all{position:absolute;top:55px;left:32px;text-align:center;color:#fff;}
+			.banner .b_bg .b_con .tools .t_news .t_tool .sys .s_all .s_desc{font-size:16px;}
+			.banner .b_bg .b_con .tools .t_news .t_tool .sys .code{width:126px;height:126px;position:absolute;top:-5px;left:-112px;background:url("images/bg-board-qr.png");opacity:1;display:none;}
+			/*end tools*/
+			/*end banner*/
+			/*activities start*/
+				.activities{width:980px;height:125px;margin:0 auto;padding-left:220px;}
+				.activities a{float:left;}
+			/*end activities*/
+			/*hot course start*/
+			.hot_course{width:1200px;height:330px;margin:0px auto;padding-top:40px;}
+			.hot_course .h_box{height:40px;}
+			.hot_course .h_box .h_nav{height:40px;border-bottom:1px solid #CCC;}
+			.hot_course .h_box .h_nav a{width:220px;height:40px;display:block;text-decoration:none;font-size:22px;color:#000;padding-left:10px;float:left;}
+			.hot_course .h_box .h_nav a:hover{color:blue;}
+			.hot_course .h_box .h_nav .live{float:left;}
+			.hot_course .h_box .h_nav .live li{width:60px;list-style:none;float:left;text-align:center;line-height:40px;font-size:16px;cursor:pointer;color:#000;padding:0 15px;}
+			.hot_course .h_box .h_nav .live .l_sel{border-bottom:2px solid #039;}
+			.hot_course .h_box .h_nav .live li:hover{color:blue;font-weight:bold;}
+
+			.hot_course .h_box .h_all{width:1300px;height:260px;margin-top:20px;}
+			.hot_course .h_box .h_all .list_live{height:180px;}
+			.hot_course .h_box .h_all .list_live li{list-style:none;float:left;padding-left:10px;}
+			.hot_course .h_box .h_all .list_live li .l_course{padding:10px 11px 8px 8px;}
+			.hot_course .h_box .h_all .list_live li .l_course:hover{box-shadow:#ececec 5px 5px 1px;border:1px solid #999966;padding:9px 10px 7px 7px;}
+			.hot_course .h_box .h_all .list_live li .l_course
+			 a{font-size:14px;color:#666;text-decoration:none;display:block;}
+			.hot_course .h_box .h_all .list_live li .l_course a:hover{color:blue;}
+			.hot_course .h_box .h_all .list_live li .l_course .c_title{padding:5px;display:block;width:150px;}
+			.hot_course .h_box .h_all .list_live li .l_course p{padding-left:5px;}
+			.hot_course .h_box .h_all .list_live li .l_course p span{font-size:16px;color:#090;}
+
+			.hot_course .h_box .h_all .list_video{height:180px;display:none;}
+			.hot_course .h_box .h_all .list_video li{list-style:none;}
+			.hot_course .h_box .h_all .list_video{height:180px;}
+			.hot_course .h_box .h_all .list_video li{list-style:none;float:left;padding-left:10px;}
+			.hot_course .h_box .h_all .list_video li .l_course{box-shadow:#ececec 5px 5px 1px;padding:10px 11px 8px 8px;}
+			.hot_course .h_box .h_all .list_video li .l_course:hover{border:1px solid #999966;width:220px;padding:9px 10px 7px 7px;}
+			.hot_course .h_box .h_all .list_video li .l_course
+			 a{font-size:14px;color:#666;text-decoration:none;display:block;}
+			.hot_course .h_box .h_all .list_video li .l_course a:hover{color:blue;}
+			.hot_course .h_box .h_all .list_video li .l_course .c_title{padding:5px;display:block;width:150px;}
+			.hot_course .h_box .h_all .list_video li .l_course p{padding-left:5px;}
+			.hot_course .h_box .h_all .list_video li .l_course p span{font-size:16px;color:#090;}
+
+			/*end hot course*/
+
+			/*content start*/
+				.content{width:1200px;height:600px;margin:0 auto;}
+				.content .c_course_list{height:540px;}
+				.content .c_course_list .c_list_box .c_nav{height:40px;}
+				.content .c_course_list .c_list_box .c_nav a{width:220px;height:40px;display:block;text-decoration:none;font-size:22px;color:#000;padding-left:10px;float:left;}
+				.content .c_course_list .c_list_box .c_nav a:hover{color:blue;}
+				.content .c_course_list .c_list_box .c_nav ul{float:left;}
+				.content .c_course_list .c_list_box .c_nav ul li{width:90px;list-style:none;float:left;text-align:center;line-height:40px;font-size:16px;cursor:pointer;color:#000;padding:0 15px;}
+				.content .c_course_list .c_list_box .c_nav ul .c_sel{border-bottom:2px solid #039;}
+				.content .c_course_list .c_list_box .c_nav ul li:hover{color:blue;font-weight:bold;}
+				.content .c_course_list .c_list_box .c_list_all{position:relative;width:1220px;}
+				.content .c_course_list .c_list_box .c_list_all .c_banner{width:220px;display:block;position:absolute;top:0;left:-20px;}
+				.content .c_course_list .c_list_box .c_list_all .c_a_list{width:750px;height:390px;margin-left:220px;float:left;}
+				.hot_course .h_box .h_all ul{height:180px;}
+				.content .c_course_list .c_list_box .c_list_all .c_a_list ul li{list-style:none;float:left;padding-left:10px;}
+				.content .c_course_list .c_list_box .c_list_all .c_a_list ul li .l_course{padding:10px 11px 8px 8px;}
+				.content .c_course_list .c_list_box .c_list_all .c_a_list ul li .l_course:hover{box-shadow:#ececec 5px 5px 1px;border:1px solid #999966;padding:9px 10px 7px 7px;}
+				.content .c_course_list .c_list_box .c_list_all .c_a_list ul li .l_course
+				 a{font-size:14px;color:#666;text-decoration:none;display:block;}
+				.content .c_course_list .c_list_box .c_list_all .c_a_list ul li .l_course a:hover{color:blue;}
+				.c_list_all .c_a_list ul li .l_course .c_title{padding:5px;display:block;width:150px;}
+				.c_list_all .c_a_list ul li .l_course p{padding-left:5px;}
+				.c_list_all .c_a_list ul li .l_course p span{font-size:16px;color:#090;}
+				.content .c_course_list .c_list_box .c_list_all .c_a_list ul{display:none;}
+				.content .c_course_list .c_list_box .c_list_all .c_a_list .c_com{display:block;}
+				.content .c_course_list .c_list_box .c_list_all .c_a_list ul li p .fufei{color:red;}
+
+			/*end content*/
+			/*content_1 start*/
+				.content_1{width:1200px;height:600px;margin:0 auto;}
+				.content_1 .c_course_list{height:540px;}
+				.content_1 .c_course_list .c_list_box .c1_nav{height:40px;}
+				.content_1 .c_course_list .c_list_box .c1_nav a{width:220px;height:40px;display:block;text-decoration:none;font-size:22px;color:#000;padding-left:10px;float:left;}
+				.content_1 .c_course_list .c_list_box .c1_nav a:hover{color:blue;}
+				.content_1 .c_course_list .c_list_box .c1_nav ul{float:left;}
+				.content_1 .c_course_list .c_list_box .c1_nav ul li{width:90px;list-style:none;float:left;text-align:center;line-height:40px;font-size:16px;cursor:pointer;color:#000;padding:0 15px;}
+				.content_1 .c_course_list .c_list_box .c1_nav ul .c_sel{border-bottom:2px solid #039;}
+				.content_1 .c_course_list .c_list_box .c1_nav ul li:hover{color:blue;font-weight:bold;}
+				.content_1 .c_course_list .c_list_box .c1_list_all{position:relative;width:1220px;}
+				.content_1 .c_course_list .c_list_box .c1_list_all .c_banner{width:220px;display:block;position:absolute;top:0;left:-20px;}
+				.content_1 .c_course_list .c_list_box .c1_list_all .c_a_list{width:750px;height:390px;margin-left:220px;float:left;}
+				.hot_course .h_box .h_all ul{height:180px;}
+				.content_1 .c_course_list .c_list_box .c1_list_all .c_a_list ul li{list-style:none;float:left;padding-left:10px;}
+				.content_1 .c_course_list .c_list_box .c1_list_all .c_a_list ul li .l_course{padding:10px 11px 8px 8px;}
+				.content_1 .c_course_list .c_list_box .c1_list_all .c_a_list ul li .l_course:hover{box-shadow:#ececec 5px 5px 1px;border:1px solid #999966;padding:9px 10px 7px 7px;}
+				.content_1 .c_course_list .c_list_box .c1_list_all .c_a_list ul li .l_course
+				 a{font-size:14px;color:#666;text-decoration:none;display:block;}
+				.content_1 .c_course_list .c_list_box .c1_list_all .c_a_list ul li .l_course a:hover{color:blue;}
+				.c1_list_all .c_a_list ul li .l_course .c_title{padding:5px;display:block;width:150px;}
+				.c1_list_all .c_a_list ul li .l_course p{padding-left:5px;}
+				.c1_list_all .c_a_list ul li .l_course p span{font-size:16px;color:#090;}
+				.content_1 .c_course_list .c_list_box .c1_list_all .c_a_list ul{display:none;}
+				.content_1 .c_course_list .c_list_box .c1_list_all .c_a_list .c_com{display:block;}
+				.content_1 .c_course_list .c_list_box .c1_list_all .c_a_list ul li p .fufei{color:red;}
+
+			/*end content*/
+
+
+		</style>
+	</head>
+<body bgcolor="#fff">
+		<!--header start-->
+		<div class="header">
+
+			<h1>
+				<a href="#"><img src="images/logo.png" alt="logo" width="288" height="38" /></a>
+			</h1>
+			<div class="h_search">
+				<div class="search">
+					<input type="text" class="s_text" placeholder="搜索课程">
+					<a href="#">
+						<span>
+						<img src="images/icon-search-white.png" alt="搜索" width="20" height="20"/>
+						</span>
+					</a>
+				</div>
+			</div>
+			<!--登陆开始-->
+			<div class="login">
+				<a href="#" class="in">登陆</a>
+				<a href="#" class="help">帮助</a>
+			</div>
+			<!--登陆结束-->
+		</div>
+		<!--end header-->
+		<!--banner start-->
+		<div class="banner">
+			<div class="b_adv">
+				<a href="#"><img src="images/banner-top.jpg" alt="群聚学习" width="760" height="50"/></a>
+			</div>
+			<div class="b_bg">
+				<div class="b_con">
+					<!--menu start-->
+					<div class="menu">
+						<ul>
+							<li class="m_all">
+								<a href="#"><span></span>全部课程
+								</a>
+							</li>
+							<li>
+								<h2>
+									<i></i>
+									<a href="#">职业技能</a>
+
+								</h2>
+								<h3>
+									<a href="#">职场技能</a>
+									<a href="#">SNS营销</a>
+									<a href="#">公务员</a>
+
+								</h3>
+								<div class="show_menu">
+									<dl class="m_caidan">
+										<dt>职场/求职</dt>
+										<dd>
+													<a href="#">就业指导</a>
+													<a href="#">职业规划</a>
+													<a href="#">职场技能</a>
+													<a href="#">企业培训</a>
+													<a href="#">创业指导</a>
+
+										</dd>
+										<dt>市场营销</dt>
+										<dd>
+																																										<a href="#">淘宝营销</a>
+													<a href="#">网络推广</a>
+													<a href="#">SNS营销</a>
+													<a href="#">SEO/SEM</a>
+										</dd>
+										<dt>职业类考试</dt>
+										<dd>
+													<a href="#">公务员</a>
+													<a href="#">财会类</a>
+													<a href="#">建筑类</a>
+													<a href="#">金融类</a>
+													<a href="#">其他考试</a>
+
+										</dd>
+										<dt>其他技能</dt>
+										<dd>
+													<a href="#">美容培训</a>
+													<a href="#">汽车维修</a>
+													<a href="#">其他</a>
+
+										</dd>
+									</dl>
+
+								</div>
+							</li>
+							<li>
+								<h2>
+									<i></i>
+									<a href="#">IT培训</a>
+
+								</h2>
+								<h3>
+									<a href="#">职场技能</a>
+									<a href="#">SNS营销</a>
+									<a href="#">公务员</a>
+
+								</h3>
+								<div class="show_menu">
+									<dl class="m_caidan">
+										<dt>职场/求职</dt>
+										<dd>
+													<a href="#">就业指导</a>
+													<a href="#">职业规划</a>
+													<a href="#">职场技能</a>
+													<a href="#">企业培训</a>
+													<a href="#">创业指导</a>
+
+										</dd>
+										<dt>市场营销</dt>
+										<dd>
+																																																																							<a href="#">淘宝营销</a>
+													<a href="#">网络推广</a>
+													<a href="#">SNS营销</a>
+													<a href="#">SEO/SEM</a>
+										</dd>
+										<dt>职业类考试</dt>
+										<dd>
+													<a href="#">公务员</a>
+													<a href="#">财会类</a>
+													<a href="#">建筑类</a>
+													<a href="#">金融类</a>
+													<a href="#">其他考试</a>
+
+										</dd>
+										<dt>其他技能</dt>
+										<dd>
+													<a href="#">美容培训</a>
+													<a href="#">汽车维修</a>
+													<a href="#">其他</a>
+
+										</dd>
+									</dl>
+
+								</div>
+							</li>
+							<li>
+								<h2>
+									<i></i>
+									<a href="#">语言学习</a>
+
+								</h2>
+								<h3>
+									<a href="#">职场技能</a>
+									<a href="#">SNS营销</a>
+									<a href="#">公务员</a>
+								</h3>
+								<div class="show_menu">
+									<dl class="m_caidan">
+										<dt>职场/求职</dt>
+										<dd>
+													<a href="#">就业指导</a>
+													<a href="#">职业规划</a>
+													<a href="#">职场技能</a>
+													<a href="#">企业培训</a>
+													<a href="#">创业指导</a>
+
+										</dd>
+										<dt>市场营销</dt>
+										<dd>
+																																										<a href="#">淘宝营销</a>
+													<a href="#">网络推广</a>
+													<a href="#">SNS营销</a>
+													<a href="#">SEO/SEM</a>
+										</dd>
+										<dt>职业类考试</dt>
+										<dd>
+													<a href="#">公务员</a>
+													<a href="#">财会类</a>
+													<a href="#">建筑类</a>
+													<a href="#">金融类</a>
+													<a href="#">其他考试</a>
+
+										</dd>
+										<dt>其他技能</dt>
+										<dd>
+													<a href="#">美容培训</a>
+													<a href="#">汽车维修</a>
+													<a href="#">其他</a>
+
+										</dd>
+									</dl>
+
+								</div>
+							</li>
+							<li>
+								<h2>
+									<i></i>
+									<a href="#">中小学/大学</a>
+
+								</h2>
+								<h3>
+									<a href="#">IT培训</a>
+									<a href="#">SNS营销</a>
+									<a href="#">公务员</a>
+
+								</h3>
+								<div class="show_menu">
+									<dl class="m_caidan">
+										<dt>职场/求职</dt>
+										<dd>
+													<a href="#">就业指导</a>
+													<a href="#">职业规划</a>
+													<a href="#">职场技能</a>
+													<a href="#">企业培训</a>
+													<a href="#">创业指导</a>
+
+										</dd>
+										<dt>市场营销</dt>
+										<dd>
+																																<a href="#">淘宝营销</a>
+													<a href="#">网络推广</a>
+													<a href="#">SNS营销</a>
+													<a href="#">SEO/SEM</a>
+										</dd>
+										<dt>职业类考试</dt>
+										<dd>
+													<a href="#">公务员</a>
+													<a href="#">财会类</a>
+													<a href="#">建筑类</a>
+													<a href="#">金融类</a>
+													<a href="#">其他考试</a>
+
+										</dd>
+										<dt>其他技能</dt>
+										<dd>
+													<a href="#">美容培训</a>
+													<a href="#">汽车维修</a>
+													<a href="#">其他</a>
+
+										</dd>
+									</dl>
+
+								</div>
+							</li>
+							<li>
+								<h2>
+									<i></i>
+									<a href="#">语言学习</a>
+
+								</h2>
+								<h3>
+									<a href="#">中小学/大学</a>
+									<a href="#">SNS营销</a>
+									<a href="#">公务员</a>
+
+								</h3>
+
+								<div class="show_menu">
+									<dl class="m_caidan">
+										<dt>职场/求职</dt>
+										<dd>
+													<a href="#">就业指导</a>
+													<a href="#">职业规划</a>
+													<a href="#">职场技能</a>
+													<a href="#">企业培训</a>
+													<a href="#">创业指导</a>
+
+										</dd>
+										<dt>市场营销</dt>
+										<dd>
+																																										<a href="#">淘宝营销</a>
+													<a href="#">网络推广</a>
+													<a href="#">SNS营销</a>
+													<a href="#">SEO/SEM</a>
+										</dd>
+										<dt>职业类考试</dt>
+										<dd>
+													<a href="#">公务员</a>
+													<a href="#">财会类</a>
+													<a href="#">建筑类</a>
+													<a href="#">金融类</a>
+													<a href="#">其他考试</a>
+
+										</dd>
+										<dt>其他技能</dt>
+										<dd>
+													<a href="#">美容培训</a>
+													<a href="#">汽车维修</a>
+													<a href="#">其他</a>
+
+										</dd>
+									</dl>
+
+								</div>
+							</li>
+							<li>
+								<h2>
+									<i></i>
+									<a href="#">职业技能</a>
+
+								</h2>
+								<h3>
+									<a href="#">职场技能</a>
+									<a href="#">SNS营销</a>
+									<a href="#">公务员</a>
+
+								</h3>
+								<div class="show_menu">
+									<dl class="m_caidan">
+										<dt>职场/求职</dt>
+										<dd>
+													<a href="#">就业指导</a>
+													<a href="#">职业规划</a>
+													<a href="#">职场技能</a>
+													<a href="#">企业培训</a>
+													<a href="#">创业指导</a>
+
+										</dd>
+										<dt>市场营销</dt>
+										<dd>
+																																										<a href="#">淘宝营销</a>
+													<a href="#">网络推广</a>
+													<a href="#">SNS营销</a>
+													<a href="#">SEO/SEM</a>
+										</dd>
+										<dt>职业类考试</dt>
+										<dd>
+													<a href="#">公务员</a>
+													<a href="#">财会类</a>
+													<a href="#">建筑类</a>
+													<a href="#">金融类</a>
+													<a href="#">其他考试</a>
+
+										</dd>
+										<dt>其他技能</dt>
+										<dd>
+													<a href="#">美容培训</a>
+													<a href="#">汽车维修</a>
+													<a href="#">其他</a>
+
+										</dd>
+									</dl>
+
+								</div>
+							</li>
+						</ul>
+					</div>
+					<!--end menu-->
+
+					<!--focus start-->
+					<div class="focus">
+							<ul class="f_pic">
+								<li><a href="#"><img src="images/banner-1.jpg" alt="潭州学院" width="760" height="300" /></a></li>
+								<li><a href="#"><img src="images/banner-2.jpg" alt="潭州学院" width="760" height="300" /></li>
+								<li><a href="#"><img src="images/banner-3.jpg" alt="潭州学院" width="760" height="300" /></a></li>
+								<li><a href="#"><img src="images/banner-4.jpg" alt="潭州学院" width="760" height="300" /></a></li>
+								<li><a href="#"><img src="images/banner-5.jpg" alt="潭州学院" width="760" height="300" /></a></li>
+							</ul>
+							<div class="f_btn">
+								<ul>
+									<li class="no" data-color="#a534d6"></li>
+									<li data-color="#4a4d9c"></li>
+									<li data-color="#6365ce"></li>
+									<li data-color="#523484"></li>
+									<li data-color="#009ee7"></li>
+								</ul>
+
+							</div>
+								<div class="f_ear pre"></div>
+								<div class="f_ear next"></div>
+					</div>
+					<!--end focus-->
+					<!--tools start-->
+				<div class="tools">
+					<div class="t_news">
+						<ul>
+							<li><a href="#">手把手教你做小霸王游戏</a></li>
+							<li><a href="#">2015考研英语名师解析</a></li>
+							<li><a href="#">网站制作达人分享</a></li>
+							<li><a href="#">海归型男的中秋邂逅</a></li>
+						</ul>
+						<div class="t_tool">
+
+							<a href="#" class="down_qq">
+							<i></i>
+							<span class="d_all"><span class="desc">下载</span></br>专用QQ</span>
+							</a>
+							<div class="sys">
+								<i></i>
+								<span class="s_all"><span class="s_desc">下载</span></br>专用QQ</span>
+								<div class="code"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--end tools-->
+
+				</div>
+			</div>
+		</div>
+		<!--end banner-->
+
+		<!--activities start-->
+			<div class="activities">
+				<a href="#"><img src="images/a-1.jpg" alt="" width="326" height="125" /></a>
+				<a href="#"><img src="images/a-2.jpg" alt="" width="326" height="125" /></a>
+				<a href="#"><img src="images/a-3.jpg" alt="" width="326" height="125" /></a>
+			</div>
+		<!--end activities-->
+
+		<!--hot-course start-->
+			<div class="hot_course">
+				<div class="h_box">
+					<div class="h_nav">
+						<a href="#">热门课程</a>
+						<ul class="live">
+							<li class="l_sel">直播课</li>
+							<li>录播课</li>
+						</ul>
+					</div>
+				<div class="h_all">
+					<ul class="list_live">
+						<li>
+							<div class="l_course">
+							<a href="#"><img src="images/220.jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">英福伦斯 Live Show</a>
+							<p><span>免费</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+							<div class="l_course">
+							<a href="#"><img src="images/220.png" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">你好，学霸 Live Show</a>
+							<p><span>免费</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220 (1).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">日语初级 Live Show</a>
+							<p><span>免费</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220 (2).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">绘画 Live Show</a>
+							<p><span>免费</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220 (3).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">PS Live Show</a>
+							<p><span>免费</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+							</li>
+					</ul>
+					<ul class="list_video">
+						<li>
+							<div class="l_course">
+							<a href="#"><img src="images/220.jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">英福伦斯 Live Show</a>
+							<p><span>免费</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+							<div class="l_course">
+							<a href="#"><img src="images/220.png" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">你好，学霸 Live Show</a>
+							<p><span>免费</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220 (1).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">日语初级 Live Show</a>
+							<p><span>免费</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220 (2).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">绘画 Live Show</a>
+							<p><span>免费</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220 (3).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">PS Live Show</a>
+							<p><span>免费</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+							</li>
+					</ul>
+				</div>
+				</div>
+			</div>
+		<!--hot-course end-->
+
+		<!--content start-->
+			<div class="content">
+				<div class="c_course_list">
+					<div class="c_list_box">
+						<div class="c_nav">
+							<a href="#">职业技能</a>
+							<ul>
+								<li class="c_sel">推荐</li>
+								<li>职场/求职</li>
+								<li>职业类考试</li>
+								<li>市场营销</li>
+								<li>最新发布</li>
+
+							</ul>
+						</div>
+						<div class="c_list_all">
+							<a href="#" class="c_banner"><img src="images/3846e35f_yb_240_420.png" alt="" width="240" height="420" /></a>
+							<div class="c_a_list">
+							<!--推荐-->
+							<ul class="c_com">
+							<li>
+							<div class="l_course">
+							<a href="#"><img src="images/220.webp (6).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">第五季西门子PLC</a>
+							<p><span>免费</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+							<div class="l_course">
+							<a href="#"><img src="images/220.webp (7).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">人力资源开发</a>
+							<p><span class="fufei">￥11</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (8).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">考试预测班</a>
+							<p><span class="fufei">￥50</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (9).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">资料填写讲座</a>
+							<p><span>免费</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (10).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">尚政</a>
+							<p><span>免费</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+							</li>
+						</ul>
+						<!--推荐结束-->
+
+						<!--职场求职开始-->
+
+						<ul class="c_zhiye">
+						<li>
+							<div class="l_course">
+							<a href="#"><img src="images/220.webp (12).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">word 高级</a>
+							<p><span class="fufei">￥200</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+							<div class="l_course">
+							<a href="#"><img src="images/220.webp (13).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">PPt应用</a>
+							<p><span class="fufei">￥300</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (11).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">农业银行</a>
+							<p><span class="fufei">￥400</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (15).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">excel训练</a>
+							<p><span class="fufei">￥50</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (16).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">创业</a>
+							<p><span class="fufei">￥250</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+							</li>
+							<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (17).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">工作心得</a>
+							<p><span class="fufei">￥50</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+							</li>
+					</ul>
+					<!--职场求职 结束-->
+
+					<!--职业类考试-->
+					<ul class="c_kaoshi">
+							<li>
+							<div class="l_course">
+							<a href="#"><img src="images/220.webp (1).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">安装工程造价</a>
+							<p><span class="fufei">17元</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+							<div class="l_course">
+							<a href="#"><img src="images/220.webp (2).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">二级建造师</a>
+							<p><span class="fufei">￥38</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (3).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">事业单位</a>
+							<p><span class="fufei">￥1</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (4).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">初级会计</a>
+							<p><span class="fufei">￥100</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (5).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">行测</a>
+							<p><span class="fufei">￥5</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+							</li>
+						</ul>
+						<!--职业类考试 结束-->
+
+						<!--市场营销 开始-->
+						<ul class="c_kaoshi">
+							<li>
+							<div class="l_course">
+							<a href="#"><img src="images/220.webp (18).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">互联网赚钱</a>
+							<p><span>免费</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+							<div class="l_course">
+							<a href="#"><img src="images/220.webp (19).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">微信营销</a>
+							<p><span>免费</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (20).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">微信营销最新方法</a>
+							<p><span>免费</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (21).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">网络营销</a>
+							<p><span>免费</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (22).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">金牌销售员</a>
+							<p><span>免费</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+							</li>
+							<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (23).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">移动互联网</a>
+							<p><span>免费</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+							</li>
+						</ul>
+						<!--市场营销 结束-->
+						<!--最新发布 开始-->
+						<ul class="c_kaoshi">
+							<li>
+							<div class="l_course">
+							<a href="#"><img src="images/220.webp (24).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">191葡萄公开课</a>
+							<p><span>免费</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+							<div class="l_course">
+							<a href="#"><img src="images/220.webp (25).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">UG数控编程</a>
+							<p><span class="fufei">￥3800</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (26).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">上海公务员考试</a>
+							<p><span class="fufei">￥399</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (27).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">消防工程师考试</a>
+							<p><span class="fufei">￥100</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (28).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">消防案例分析</a>
+							<p><span class="fufei">￥5</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+							</li>
+							<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (29).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">波段交易与趋势</a>
+							<p><span class="fufei">￥5</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+							</li>
+						</ul>
+						</div>
+						<!--最新发布 结束-->
+
+						</div>
+				</div>
+			</div>
+
+		<!--end content-->
+		<!--content start-->
+			<div class="content_1">
+				<div class="c_course_list">
+					<div class="c_list_box">
+						<div class="c1_nav">
+							<a href="#">职业技能</a>
+							<ul>
+								<li class="c_sel">推荐</li>
+								<li>职场/求职</li>
+								<li>职业类考试</li>
+								<li>市场营销</li>
+								<li>最新发布</li>
+
+							</ul>
+						</div>
+						<div class="c1_list_all">
+							<a href="#" class="c_banner"><img src="images/3846e35f_yb_240_420.png" alt="" width="240" height="420" /></a>
+							<div class="c_a_list">
+							<!--推荐-->
+							<ul class="c_com">
+							<li>
+							<div class="l_course">
+							<a href="#"><img src="images/220.webp (6).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">第五季西门子PLC</a>
+							<p><span>免费</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+							<div class="l_course">
+							<a href="#"><img src="images/220.webp (7).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">人力资源开发</a>
+							<p><span class="fufei">￥11</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (8).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">考试预测班</a>
+							<p><span class="fufei">￥50</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (9).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">资料填写讲座</a>
+							<p><span>免费</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (10).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">尚政</a>
+							<p><span>免费</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+							</li>
+						</ul>
+						<!--推荐结束-->
+
+						<!--职场求职开始-->
+
+						<ul class="c_zhiye">
+						<li>
+							<div class="l_course">
+							<a href="#"><img src="images/220.webp (12).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">word 高级</a>
+							<p><span class="fufei">￥200</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+							<div class="l_course">
+							<a href="#"><img src="images/220.webp (13).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">PPt应用</a>
+							<p><span class="fufei">￥300</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (11).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">农业银行</a>
+							<p><span class="fufei">￥400</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (15).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">excel训练</a>
+							<p><span class="fufei">￥50</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (16).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">创业</a>
+							<p><span class="fufei">￥250</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+							</li>
+							<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (17).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">工作心得</a>
+							<p><span class="fufei">￥50</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+							</li>
+					</ul>
+					<!--职场求职 结束-->
+
+					<!--职业类考试-->
+					<ul class="c_kaoshi">
+							<li>
+							<div class="l_course">
+							<a href="#"><img src="images/220.webp (1).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">安装工程造价</a>
+							<p><span class="fufei">17元</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+							<div class="l_course">
+							<a href="#"><img src="images/220.webp (2).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">二级建造师</a>
+							<p><span class="fufei">￥38</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (3).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">事业单位</a>
+							<p><span class="fufei">￥1</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (4).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">初级会计</a>
+							<p><span class="fufei">￥100</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (5).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">行测</a>
+							<p><span class="fufei">￥5</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+							</li>
+						</ul>
+						<!--职业类考试 结束-->
+
+						<!--市场营销 开始-->
+						<ul class="c_kaoshi">
+							<li>
+							<div class="l_course">
+							<a href="#"><img src="images/220.webp (18).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">互联网赚钱</a>
+							<p><span>免费</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+							<div class="l_course">
+							<a href="#"><img src="images/220.webp (19).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">微信营销</a>
+							<p><span>免费</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (20).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">微信营销最新方法</a>
+							<p><span>免费</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (21).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">网络营销</a>
+							<p><span>免费</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (22).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">金牌销售员</a>
+							<p><span>免费</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+							</li>
+							<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (23).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">移动互联网</a>
+							<p><span>免费</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+							</li>
+						</ul>
+						<!--市场营销 结束-->
+						<!--最新发布 开始-->
+						<ul class="c_kaoshi">
+							<li>
+							<div class="l_course">
+							<a href="#"><img src="images/220.webp (24).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">191葡萄公开课</a>
+							<p><span>免费</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+							<div class="l_course">
+							<a href="#"><img src="images/220.webp (25).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">UG数控编程</a>
+							<p><span class="fufei">￥3800</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (26).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">上海公务员考试</a>
+							<p><span class="fufei">￥399</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (27).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">消防工程师考试</a>
+							<p><span class="fufei">￥100</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+						</li>
+						<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (28).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">消防案例分析</a>
+							<p><span class="fufei">￥5</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+							</li>
+							<li>
+						<div class="l_course">
+							<a href="#"><img src="images/220.webp (29).jpg" alt="" width="220" height="124" /><br />
+							</a>
+							<a href="#" class="c_title">波段交易与趋势</a>
+							<p><span class="fufei">￥5</span>&nbsp;&nbsp;&nbsp;腾讯课堂  </a>
+							</p>
+							</li>
+						</ul>
+						</div>
+						<!--最新发布 结束-->
+
+						</div>
+				</div>
+			</div>
+		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+
+				//左侧菜单切换
+				$(".menu").find("li").mouseover(function(){
+					$(this).find(".show_menu").addClass("show");
+
+				}).mouseout(function(){
+					$(this).find(".show_menu").removeClass("show");
+				});
+				var index = 0;
+				//banner图切换
+				$(".f_btn").find("li").mouseover(function(){
+					//控制小按钮
+				$(this).addClass("no").siblings().removeClass("no");
+					//联动切换
+				var _index=$(this).index();
+				index = _index;//重新赋值
+				$(".f_pic").find("li").eq(_index).fadeIn("show").siblings().hide();
+
+				var background=$(this).data("color");
+				$(this).parents(".b_bg").css("background",background);
+				});
+				//下一张切换
+				$(".next").click(function(){
+				index++;
+				var length=$(".f_pic").find("li").length;
+				if(index >=length)
+					index=0;
+					//切换背景颜色
+					var background=$(".f_btn").find("li").eq(index).data("color");
+					$(this).parents(".b_bg").css("background",background);
+					//联动小按钮
+					$(".f_btn").find("li").eq(index).addClass("no").siblings().removeClass("no");
+					$(".f_pic").find("li").eq(index).fadeIn("show").siblings().hide();
+				});
+				//上一张切换
+				$(".pre").click(function(){
+				var length=$(".f_pic").find("li").length;
+				if(index <=0)
+				index=length;
+				index--;
+
+					$(".f_btn").find("li").eq(index).addClass("no").siblings().removeClass("no");
+					$(".f_pic").find("li").eq(index).fadeIn("show").siblings().hide();
+				});
+				setInterval(function(){
+					index++;
+				var length=$(".f_pic").find("li").length;
+				if(index >=length)
+					index=0;
+					//切换背景颜色
+					var background=$(".f_btn").find("li").eq(index).data("color");
+					$(".b_bg").css("background",background);
+					//联动小按钮
+					$(".f_btn").find("li").eq(index).addClass("no").siblings().removeClass("no");
+					$(".f_pic").find("li").eq(index).fadeIn("show").siblings().hide();
+				},3000);
+				//显示二维码
+				$(".sys").hover(function(){
+					$(".code").fadeTo(300,1);
+
+				},function(){
+					$(".code").hide();
+				});
+
+				//热播课程滑动导航
+				$(".live").find("li").hover(function(){
+					$(this).addClass("l_sel").siblings().removeClass("l_sel");
+					var _index=$(this).index();
+					$(".h_all").find("ul").hide().eq(_index).fadeTo(300,1);
+				});
+				$(".c_nav").find("ul li").hover(function(){
+					$(this).addClass("c_sel").siblings().removeClass("c_sel");
+					var _index=$(this).index();
+					$(".c_list_all").find("ul").hide().eq(_index).fadeTo(300,1);
+				});
+				$(".c1_nav").find("ul li").hover(function(){
+					$(this).addClass("c_sel").siblings().removeClass("c_sel");
+					var _index=$(this).index();
+					$(".c1_list_all").find("ul").hide().eq(_index).fadeTo(300,1);
+				});
+			});
+		</script>
+</body>
+
+
+</html>

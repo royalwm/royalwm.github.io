@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		body{font-size:12px;font-family:"微软雅黑";color:#666;}
+		#wrap{margin:0 auto;width:500px;height:500px;background:#000;position:relative;}
+		#box{width:50px;height:50px;background:red;border-radius:50%;position:absolute;top:225px;left:255px;}
+		#content{animation:move 1s ease alternate infinite;background:#fff;width:50px;height:50px;border-radius:50%;position:absolute;top:225px;left:650px;}
+		@keyframes move{
+			from{transform:scale(1);}
+			to{transform:scale(1.5);opacity:0;}
+			}
+	</style>
+ <body>
+		<div id="wrap">
+			<div id="box"></div>
+		</div>
+			<div id="content"></div>
+		<script type="text/javascript">
+				window.onload=function(){
+					var boxDom=document.getElementById("box");
+					var wrapDom=document.getElementById("wrap");
+					var x=0;
+					var y=0;
+					var angle=0;
+					var v=0.2;
+					var arr=[];
+					function draw(){
+						x=225+Math.sin(angle)*225;
+						y=225+Math.cos(angle)*225;
+						angle+=v;
+						boxDom.style.left=x+"px";
+						boxDom.style.top=y+"px";
+						var shadow=document.createElement("div");
+						shadow.style.width="50px";
+						shadow.style.height="50px";
+						shadow.style.borderRadius="50%";
+						shadow.style.position="absolute";
+						shadow.style.background=randomColor();
+						shadow.style.left=boxDom.offsetLeft+"px";
+						shadow.style.top=boxDom.offsetTop+"px";
+						arr.push(shadow);
+						wrapDom.appendChild(shadow);
+						if(arr.length>10){
+							//shift() 方法用于把数组的第一个元素从其中删除，并返回第一个元素的值。
+							wrapDom.removeChild(arr.shift());
+						}
+					}
+					setInterval(draw,1000/30);
+					function randomColor(){
+						var r=Math.floor(Math.random()*255).toString(16);
+						var g=Math.floor(Math.random()*255).toString(16);
+						var b=Math.floor(Math.random()*255).toString(16);
+						return "#"+r+g+b;
+					}
+				}
+		</script>
+ </body>
+</html>
+

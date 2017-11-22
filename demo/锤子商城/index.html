@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		body{font-size:12px;font-family:"微软雅黑";color:#666;background:#E6E6E6}
+		a{text-decoration:none;display:block;}
+		ul{list-style:none;}
+		#wrap{width:1349px;margin:0 auto;}
+		#wrap .clear{clear:both;}
+		#wrap .top{position:fixed;right:20px;bottom:20px;z-index:99;display:none;}
+		#wrap .top:hover{opacity:0.5}
+		#wrap .header{width:1349px;height:100px;background:#343434;margin:0 auto;}
+		#wrap .header .h_left{float:left;padding-top:20px;width:50px;height:50px;margin-left:150px;}
+		.header .h_left .logo{background:url("images/smartisan-logo.png");width:50px; height:50px;display:block;}
+		.header .h_center{height:100px;margin-left:100px;float:left;}
+		.header ul li{float:left;margin-left:20px;height:100px;padding-left:15px}
+		.header .h_center .c_content{font-size:14px;color:#c5c5c5;display:block;text-align;line-height:100px;transition:all .4s ease;}
+		.header .h_center .c_content:hover{color:#fff;transition:all .4s ease;}
+		.header .h_center .c_title{color:#fff;}
+		.header .h_right{float:left;height:100px;}
+		.header .login{width:80px;height:30px;display:block;color:#fff;background:#000;text-align:center;line-height:30px;margin-top:35px;margin-left:100px;border-radius:8px;transition:all .4s ease;}
+		.header .h_right .login:hover{background:#808000;transition:all .4s ease;}
+
+		
+		.title{width:1349px;margin:0 auto;height:100px}
+		.title ul{margin-left:130px;height:90px;float:left;}
+		.title ul li{float:left;margin:20px;}
+		.title ul li .t_content{color:#808080;margin-top:25px;display:block;font-size:14px;transition:all .4s ease;}
+		.title ul li .t_content:hover{color:#6B95EA;transition:all .4s ease;}
+		.title ul li .t_title{color:#000;font-weight:bold;}
+		.title .t_right{float:right;margin-top:45px;margin-right:100px;position:relative;}
+		.title .t_right a{width:120px;height:25px;display:block;color:#343434;}
+		.title .t_right .r_text{display:block;float:left;font-size:14px;margin-left:10px;margin-top:-4px;}
+		.title .t_right .shopping_icon{background:url("images/btn-icon.png");display:block;width:25px;height:20px;float:left;background-position:-6px -468px;}
+		.title .t_right .r_total{width:15px;height:15px;display:block;float:left;border-radius:50%;line-height:15px;text-align:center;background:#343434;color:#fff;margin-left:3px;}	
+		.title .t_right  .r_desc{width:200px;height:100px;background:#fff;border-radius:8px;position:relative;position:absolute;top:32px;right:5px;display:none;z-index:99;}
+		.title .t_right img{margin:10px 50px;}
+		.title .t_right .shadow{width:100px;height:20px;position:absolute;top:-10px;right:0;}
+		.title .t_right  .sanjiao{width:40px;height:40px;background:#fff;position:absolute;top:-5px;right:10px;transform:rotate(45deg);}
+	
+		.content{width:1124px;margin:10px auto;position:relative;}
+		#banner{height:468px;overflow:hidden;}
+		#handover{width:80px;height:20px;position:absolute;bottom:20px;left:500px;}
+		#handover li{float:left;margin-left:20px;width:20px;height:20px;background:#919191;border-radius:50%;line-height:20px;text-align:center;opacity:0.8;}
+		#handover .on{background:#fff;}
+		.c1{position:relative;margin:0px auto;width:1124px;overflow:hidden;}
+		.c1 .c1_left{float:left;}
+		.c1 .c1_left .c1_img{background:#fff;width:780px;height:320px;display:block;}
+		.c1 .c1_left .c1_img ._t2{display:block;float:left;}
+		.c1 .c1_left .c1_img .t2{padding-top:100px;padding-left:100px;display:block;text-align:center;font-size:20px;color:#000;}
+		.c1 .c1_left .c1_img .t2_desc{padding:20px;padding-left:100px;display:block;font-size:14px;color:#999;text-align:center;}
+		.c1 .c1_left .c1_img .price{display:block;padding-left:100px;text-align:center;color:red;font-size:40px;padding-top:30px;}
+		.c1 .c1_left .c1_img img{float:left;}
+		
+		.c1 .c1_left .c2_img{background:#fff;width:780px;height:320px;display:block;margin-top:2px;}
+		.c1 .c1_left .c2_img ._t2{display:block;float:left;}
+		.c1 .c1_left .c2_img .t2{padding-top:100px;padding-left:100px;display:block;text-align:center;font-size:20px;color:#000;}
+		.c1 .c1_left .c2_img .t2_desc{padding:20px;padding-left:100px;display:block;font-size:14px;color:#999;text-align:center;}
+		.c1 .c1_left .c2_img .price{display:block;padding-left:100px;text-align:center;color:red;font-size:40px;padding-top:30px;}
+		.c1 .c1_left .c2_img img{float:left;}
+		.c1 .c1_left .c2_img .clear{clear:both;}
+		.c1 .c1_right{float:left;width:335px;margin-left:2px }
+		.c1 .c1_right .c3_img{background:#fff;height:320px;display:block;}
+		.c1 .c1_right .c3_img ._t2{display:block;}
+		.c1 .c1_right .c3_img .t2{padding-top:10px;padding-left:10px;display:block;text-align:center;font-size:20px;color:#000;}
+		.c1 .c1_right .c3_img .t2_desc{padding:20px;padding-left:10px;display:block;font-size:14px;color:#999;text-align:center;}
+		.c1 .c1_right .c3_img .price{display:block;padding-left:10px;text-align:center;color:red;font-size:40px;padding-top:30px;}
+		
+		.c2{width:1124px;margin:10px auto;}
+		.c2 ul li{width:372px;background:#fff;position:relative;float:left;margin:2px 1px;position:relative;height:400px;margin-bottom:10px;}
+		.c2 ul li ._t2{position:absolute;bottom:50px;left:0px;width:372px;}
+		.c2 ul li .t2{padding-top:10px;padding-left:50px;display:block;font-size:20px;color:#000;}
+		.c2 ul li .t2_desc{padding-left:40px;display:block;font-size:14px;color:#999;float:left;padding-top:20px}
+		.c2 ul li .important{color:red;}
+		.c2 ul li .price{display:block;padding-right:30px;color:red;font-size:20px;float:right;padding-top:10px;}
+		.c2 .clear{clear:both;}
+		.c3{width:1124px;margin:0 auto;}
+		.c3 ul li{width:281px;float:left;background:#fff;}
+		.c3 .c3_img{margin-top:30px;margin-left:125px;background:url("images/shopping-info_1d658b7a09.png");display:block;width:50px;height:50px;background-position:0px 0px;}
+		.c3 .c3_img:hover{opacity:0.5}
+		.c3 .c3_img2:hover{opacity:0.5}
+		.c3 .c3_img3:hover{opacity:0.5}
+		.c3 .c3_img4:hover{opacity:0.5}
+		.c3 .c3_img2{background-position:50px 0px;}
+		.c3 .c3_img3{background-position:100px 0px;}
+		.c3 .c3_img4{background-position:150px 0px;}
+		.c3 .c3_title{font-size:16px;display:block;color:#000;text-align:center;}
+		.c3 .c3_desc{font-size:12px;display:block;color:#999;text-align:center;margin-top:10px;margin-bottom:40px;}
+		
+		.foot{width:1359px;background:#fff;height:363px;margin-top:40px;}
+		.foot ul .f1{float:left;background:#fff;margin-left:40px}
+		.foot	.f_per{width:150px;text-align:center;}
+		.foot  .f_title{font-size:20px;color:#000;margin-top:50px;}
+		.foot	.f_per li{margin:10px 30px;}
+		.foot .f_per li a{color:#999;font-size:14px;transition:all 1s ease;}
+		.foot .f_per li a:hover{color:blue;transition:all 1s ease;}
+		.foot ul .f2 .online{width:100px;height:30px;background:#0099ff;text-align:center;border-radius:10%;line-height:30px;color:#fff;font-size:16px;margin:60px 0 10px 100px;}
+		.foot ul .f2 .online:hover{opacity:0.5}
+		.foot ul .f2 .number{font-size:30px;}
+	</style>
+ <body>
+		<div id="wrap">
+			<div class="top"><img src="images/top.png" width="50" height="50"/></div>
+		<!--头部-->
+				<div class="header">
+						<div class="h_left">
+								<a href="#" class="logo"></a>
+						</div>
+						<div class="h_center">
+							<ul>
+							<li><a href="#" class="c_content c_title">在线商城</a><li>
+							<li><a href="#" class="c_content">Smartisan T2</a><li>
+							<li><a href="#" class="c_content">坚果手机</a><li>
+							<li><a href="#" class="c_content">喜欢云</a><li>
+							<li><a href="#" class="c_content">应用下载</a><li>
+							<li><a href="#" class="c_content">官方论坛</a><li>
+							</ul>
+						</div>
+						<div class="h_right">
+							<a class="login" href="#">登录</a>
+						</div>
+				</div>
+			<!--title-->
+			<div class="title">
+				<ul>
+				<li><a href="#" class="t_content t_title">商城首页</a></li>
+				<li><a href="#" class="t_content">手机</a></li>
+				<li><a href="#" class="t_content">耳机/音响</a></li>
+				<li><a href="#" class="t_content">背壳/保护套</a></li>
+				<li><a href="#" class="t_content">"情怀"背壳</a></li>
+				<li><a href="#" class="t_content">其他周边</a></li>
+				<li><a href="#" class="t_content">保修服务</a></li>
+				<li><a href="#" class="t_content">全部商品</a></li>
+				</ul>
+				<div class="t_right">
+						<a href="#" class="r_shopping"><i class="shopping_icon"></i>
+						<span class="r_text">购物车</span>
+						<span class="r_total">0</span></a>
+						<div class="r_desc">
+							<img src="images/cart-empty-bg.png" />
+							<div class="shadow"></div>
+							<div class="sanjiao"></div>
+						</div>			
+				</div>
+			</div>
+			<!--content-->
+			<div class="content">
+				<div id="nav">
+					<ul id="banner">
+						<li class="b_img"><a href="#"><img src="images/home-t2-banner.png"  width="1124" height="468"/></a></li>
+						<li><a href="#"><img src="images/home-jianguo-banner.png" width="1124" height="468"/></a></li>
+					</ul>
+					<ul id="handover">
+										<li class="on">1</li>
+										<li>2</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="c1">
+				<div class="c1_left">
+					<div>
+						<a href="javascript:void(0)" class="c1_img"><div class="_t2"><span class="t2">Smartisan T2 手机保护套</span>
+						<span class="t2_desc">保护玻璃表面的同时，也与黑色机身相得益彰</span>
+						<span class="price">￥49</span>
+						</div>
+						<img src="images/home-smartisan-goods-02_328371e527.png"/>
+						<div class="clear"></div>
+						</a>
+					</div>
+					<div>
+						<a href="javascript:void(0)" class="c2_img">
+						<div class="_t2"><span class="t2">手机意外保修服务</span>
+						<span class="t2_desc">"没费跟换一次主机？"没费两次维修""</span>
+						</div>
+						<img src="images/home-smartisan-goods-03_2cbe8c4972.png"/></a>
+					</div>
+				</div>
+				<div class="c1_right">
+					<div>
+						<a href="javascript:void(0)" class="c3_img"><div class="_t2"><span class="t2">Smartisan S-1000 系列</span>
+						<span class="t2_desc">VSONIC 创始人全程参与调音</span>
+						<span class="price">￥199</span>
+						</div>
+						<img src="images/home-smartisan-goods-01_06fbedab47.png" width="335" height="480"/>
+						</a>
+					</div>
+				</div>
+				<div class="c1_desc" style="width:150px;height:20px;border:1px solid #999;display:none;text-align:center;"></div>
+			</div>
+
+			<div class="c2">
+					<ul>
+						<li>
+						<a href="javascript:void(0)" class="c2_img">
+						<img src="images/home-smartisan-goods-04_483aca4eb0.png" />
+						<div class="_t2"><span class="t2">Smartisan T 男款</span>
+						<span class="t2_desc">100% 美国 SUPIMA 棉 T 恤衫</span>
+						<span class="price">￥129</span>
+						</div>					
+						</a>
+						<div class="c1_desc" style="width:150px;height:20px;border:1px solid #999;display:none;text-align:center;"></div>
+						</li>
+						<li>
+						<a href="javascript:void(0)" class="c2_img">
+						<img src="images/home-smartisan-goods-05_6b570d2264.png" />
+						<div class="_t2"><span class="t2">Smartisan T 女款</span>
+						<span class="t2_desc">100% 美国 SUPIMA 棉 T 恤衫</span>
+						<span class="price">￥129</span>
+						</div>					
+						</a>
+						<div class="c1_desc" style="width:150px;height:20px;border:1px solid #999;display:none;text-align:center;"></div>
+						</li>
+						<li>
+						<a href="javascript:void(0)" class="c2_img">
+						<img src="images/home-smartisan-goods-06_33e960faab.png" />
+						<div class="_t2"><span class="t2">“情怀”背壳系列</span>
+						<span class="t2_desc">为了那些改变人类进程的足迹</span>
+						<span class="price">￥69</span>
+						</div>					
+						</a>
+						<div class="c1_desc" style="width:150px;height:20px;border:1px solid #999;display:none;text-align:center;"></div>
+						</li>
+						<li>
+						<a href="javascript:void(0)" class="c2_img">
+						<img src="images/home-smartisan-goods-07_ce8a7089f5.png" />
+						<div class="_t2"><span class="t2">七款彩色不透明保护套</span>
+						<span class="t2_desc">仅适用于坚果手机</span>
+						<span class="price">￥15</span>
+						</div>					
+						</a>
+						<div class="c1_desc" style="width:150px;height:20px;border:1px solid #999;display:none;text-align:center;"></div>
+						</li>
+						<li>
+						<a href="javascript:void(0)" class="c2_img">
+						<img src="images/home-smartisan-goods-08_5568b0effb.png" />
+						<div class="_t2"><span class="t2">坚果手机标准版七彩背壳</span>
+						<span class="t2_desc important">[满减优惠]买3片仅需99</span>
+						<span class="price">￥49</span>
+						</div>					
+						</a>
+						<div class="c1_desc" style="width:150px;height:20px;border:1px solid #999;display:none;text-align:center;"></div>
+						</li>
+						<li>
+						<a href="javascript:void(0)" class="c2_img">
+						<img src="images/home-smartisan-goods-09_803cb8e980.png" />
+						<div class="_t2"><span class="t2">坚果手机文青版多彩背壳</span>
+						<span class="t2_desc important">[满减优惠]买3片仅需99</span>
+						<span class="price">￥49</span>
+						</div>					
+						</a>
+						<div class="c1_desc" style="width:150px;height:20px;border:1px solid #999;display:none;text-align:center;"></div>
+						</li>
+				</ul>
+				
+			</div>
+
+			<div class="c1">
+				<div class="c1_left">
+					<div>
+						<a href="javascript:void(0)" class="c1_img"><div class="_t2"><span class="t2">JBL E10 入耳式线控耳机</span>
+						<span class="t2_desc">低频澎湃震撼</span>
+						<span class="price">￥199</span>
+						</div>
+						<img src="images/443X443.jpg" width="372" height="320"/>
+						<div class="clear"></div>
+						</a>
+					</div>
+					<div>
+						<a href="javascript:void(0)" class="c2_img">
+						<div class="_t2"><span class="t2">音乐多媒体桌面蓝牙音响</span>
+						<span class="t2_desc">迷你闹钟音响</span>
+						<span class="price">￥999</span>
+						</div>
+						<img src="images/443X443 (2).jpg" width="352" height="320"/></a>
+					</div>
+				</div>
+				<div class="c1_right">
+					<div>
+						<a href="javascript:void(0)" class="c3_img"><div class="_t2"><span class="t2">捷波朗 REVO 混音器</span>
+						<span class="t2_desc">舒适贴耳头戴式耳机</span>
+						<span class="price">￥399</span>
+						</div>
+						<img src="images/443X443 (1).jpg" width="335" height="480"/>
+						</a>
+					</div>
+				</div>
+				<div class="c1_desc" style="width:150px;height:20px;border:1px solid #999;display:none;text-align:center;"></div>
+			</div>
+			
+			<div class="c2">
+					<ul>
+						<li>
+						<a href="javascript:void(0)" class="c2_img">
+						<img src="images/443X443 (3).jpg" width="372" height="320"/>
+						<div class="_t2 " ><span class="t2">FUNIPICA F-516 手机外置镜头</span>
+						<span class="t2_desc">0.36x大广角+15x微距 180°鱼眼</span>
+						<span class="price">￥119</span>
+						</div>					
+						</a>
+						<div class="c1_desc" style="width:200px;height:20px;border:1px solid #999;display:none;text-align:center;"></div>
+						</li>
+						<li>
+						<a href="javascript:void(0)" class="c2_img">
+						<img src="images/443X443 (4).jpg" width="372" height="320"/>
+						<div class="_t2 "><span class="t2">车听宝</span>
+						<span class="t2_desc">点播式车载广播电台</span>
+						<span class="price">￥199</span>
+						</div>					
+						</a>
+						<div class="c1_desc" style="width:150px;height:20px;border:1px solid #999;display:none;text-align:center;"></div>
+						</li>
+						<li>
+						<a href="javascript:void(0)" class="c2_img">
+						<img src="images/443X443 (5).jpg" width="372" height="320" />
+						<div class="_t2 "><span class="t2">MIST 屏幕清洁喷雾</span>
+						<span class="t2_desc">擦拭喷雾二合一</span>
+						<span class="price">￥58</span>
+						</div>					
+						</a>
+						<div class="c1_desc" style="width:150px;height:20px;border:1px solid #999;display:none;text-align:center;"></div>
+						</li>		
+				</ul>
+				<div class="clear"></div>
+			</div>
+
+			<div class="c3">
+				<ul>
+					<li><a href="javascript:void(0);">
+						<i class="c3_img"></i>
+						<font class="c3_title">在线客服</font>
+						<font  class="c3_desc">周一至周日 9:00-18:00</font>
+					</a></li>
+					<li><a href="javascript:void(0);">
+						<i class="c3_img c3_img2"></i>
+						<font class="c3_title">7 天无理由退货</font>
+						<font  class="c3_desc">7 天无理由退货 请放心购买</font>
+					</a></li>
+					<li><a href="javascript:void(0);">
+						<i class="c3_img c3_img3"></i>
+						<font class="c3_title">15 天免费换货</font>
+						<font  class="c3_desc">15 天内如遇质量问题 免费换货</font>
+					</a></li>
+					<li><a href="javascript:void(0);">
+						<i class="c3_img c3_img4"></i>
+						<font class="c3_title">满150元免运费</font>
+						<font  class="c3_desc">全场使用顺风快递</font>
+					</a></li>
+				</ul>
+				<div class="clear"></div>
+			</div>
+
+			<div class="foot">
+				<ul>
+					<li class="f1">
+						<ul class="f_per">
+							<div class="f_title">订单服务</div>
+							<li><a href="javascript:void(0);">购买指南</a></li>
+							<li><a href="javascript:void(0);">支付方式</a></li>
+							<li><a href="javascript:void(0);">送货政策</a></li>
+						</ul>
+					</li>
+					<li class="f1">
+						<ul class="f_per">
+							<div class="f_title">服务支持</div>
+							<li><a href="javascript:void(0);">售后服务</a></li>
+							<li><a href="javascript:void(0);">维修门店</a></li>
+							<li><a href="javascript:void(0);">零售门店</a></li>
+						</ul>
+					</li>
+					<li class="f1">
+						<ul class="f_per">
+							<div class="f_title">媒体中心</div>
+							<li><a href="javascript:void(0);">新闻动态</a></li>
+							<li><a href="javascript:void(0);">官方视频</a></li>
+							<li><a href="javascript:void(0);">图片资源</a></li>
+						</ul>
+					</li>
+					<li class="f1">
+						<ul class="f_per">
+							<div class="f_title">关于公司</div>
+							<li><a href="javascript:void(0);">公司简介</a></li>
+							<li><a href="javascript:void(0);">加入我们</a></li>
+							<li><a href="javascript:void(0);">联系我们</a></li>
+						</ul>
+					</li>
+					<li class="f1">
+						<ul class="f_per">
+							<div class="f_title">关注我们</div>
+							<li><a href="javascript:void(0);">新浪微博</a></li>
+							<li><a href="javascript:void(0);">官方微信</a></li>
+							<li><a href="javascript:void(0);">官方贴吧</a></li>
+						</ul>
+					</li>
+					<li class="f1  f2">
+							<div class="online"><a href="javascript:void(0);">在线咨询</a></div>
+							<span class="number">400-619-0909</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript">
+			var r_shopping=document.getElementsByClassName("r_shopping");
+			var desc=document.getElementsByClassName("r_desc");
+			r_shopping[0].onmouseover=function(){
+			desc[0].style.display="block";
+			}
+			r_shopping[0].onmouseout=function(){
+				desc[0].style.display="none";
+			}
+			desc[0].onmouseover=function(){
+			desc[0].style.display="block";
+			}
+			desc[0].onmouseout=function(){
+				desc[0].style.display="none";
+			}
+				var index=0;
+			$("#handover").find("li").mouseover(function(){
+					 index=$(this).index();
+				$(this).addClass("on").siblings().removeClass("on");
+				$("#banner").find("li").eq(index).fadeIn("slow").show().siblings().fadeOut("slow").hide();
+			});
+				
+			setInterval(function(){
+				$("#handover").find("li").eq(index).addClass("on").siblings().removeClass("on");
+				$("#banner").find("li").eq(index).fadeIn("slow").show().siblings().fadeOut("slow").hide();
+				index++;
+				if(index==$("#handover").children().length)index=0;
+			},3000);
+
+			$(".c1").find(".c1_img").mouseover(function(){
+					var str=$(this).find(".t2").html();
+					$(".c1").find(".c1_desc").fadeIn("slow").stop().css({position:"absolute",top:"180px" ,left:"200px",display:"block"}).html(str);
+			}).mouseout(function(){
+					$(".c1").find(".c1_desc").fadeOut("slow").css({display:"none"})
+			});
+			$(".c1").find(".c2_img").mouseover(function(){
+					var str=$(this).find(".t2").html();
+					$(".c1").find(".c1_desc").fadeIn("slow").stop().css({position:"absolute",top:"580px" ,left:"200px",display:"block"}).html(str);
+			}).mouseout(function(){
+					$(".c1").find(".c1_desc").fadeOut("slow").css({display:"none"})
+			});
+			$(".c1").find(".c3_img").mouseover(function(){
+					var str=$(this).find(".t2").html();
+					$(".c1").find(".c1_desc").fadeIn("slow").stop().css({position:"absolute",top:"180px" ,left:"900px",display:"block"}).html(str);
+			}).mouseout(function(){
+					$(".c1").find(".c1_desc").fadeOut("slow").css({display:"none"})
+			});
+			$(".c2").find(".c2_img").mouseover(function(){
+					var str=$(this).find(".t2").html();
+					$(this).parent().find(".c1_desc").stop().fadeIn("slow").css({position:"absolute",top:"0px" ,left:"0px",display:"block"}).html(str);
+			}).mouseout(function(){
+					$(this).parent().find(".c1_desc").fadeOut("slow").css({display:"none"})
+			});
+
+			//置顶
+			$(window).scroll(function(){
+				if($(this).scrollTop()>200){
+					$(".top").fadeIn("slow").css({display:"block"});
+				}else{
+					$(".top").fadeOut("slow").css({display:"none"});
+				}
+			});
+			$(".top").on("click",function(){
+				$("html,body").animate({scrollTop:0},400);
+			});
+		</script>
+ </body>
+</html>
+

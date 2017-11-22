@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>旋转</title>
+<style type="text/css">
+    *{margin:0;padding:0}
+    body{overflow: hidden}
+    .box{width: 100px;height: 100px;position: absolute;top: calc(50% - 50px);left: calc(59% - 50px);}
+    .d{width: 100px;height: 100px;background: red;text-align: center;line-height:100px;font-size: 40px;position:absolute;opacity: 0;}
+    .dd{top:50px;animation:d 3s linear infinite;}
+    .ddd{animation:d 3s 1s linear infinite;}
+    .dddd{animation:d 3s 2s linear infinite;}
+    .c{top:-50px;animation:c 3s linear infinite;}
+    .cc{animation:c 3s 1s linear infinite;}
+    .ccc{animation:c 3s 2s linear infinite;}
+    .b{left:-50px;animation:b 3s linear infinite;}
+    .bb{animation:b 3s 1s linear infinite;}
+    .bbb{animation:b 3s 2s linear infinite;}
+    .a{left:50px;animation:a 3s linear infinite;}
+    .aa{animation:a 3s 1s linear infinite;}
+    .aaa{animation:a 3s 2s linear infinite;}
+    .box{animation:box 3s linear infinite;}
+   @keyframes d{
+                from{transform: perspective(10px) rotateX(12.5deg) rotate(180deg) translateX(0px) translateY(200px);opacity: 1;}
+                to{transform: perspective(10px) rotateX(12.5deg) rotate(180deg) translateX(0px) translateY(-100px);opacity: 1;}
+            }
+    @keyframes c{
+        from{transform:perspective(10px) rotateX(-12.5deg) translateY(200px);opacity: 1;}
+        to{transform:perspective(10px) rotateX(-12.5deg) translateY(-100px);opacity: 1;}
+    }
+    @keyframes b{
+        from{transform:perspective(10px)  rotateY(12.5deg) rotateZ(-90deg)  translateY(200px); opacity: 1;}
+        to{transform:perspective(10px)  rotateY(12.5deg) rotateZ(-90deg)  translateY(-100px); opacity: 1;}
+    }
+     @keyframes a{
+        from{transform:perspective(10px)  rotateY(-12.5deg) rotateZ(90deg)  translateY(200px); opacity: 1;}
+        to{transform:perspective(10px)  rotateY(-12.5deg) rotateZ(90deg)  translateY(-100px); opacity: 1;}
+    }
+    @keyframes box{
+        from{transform:perspective(10px)   rotate(0deg) scale(1); opacity: 1;}
+        to{transform:perspective(10px)   rotate(360deg) scale(4); opacity: 1;}
+    }
+</style>
+</head>
+<body bgcolor="#000">
+    <div class="box">
+        <div class="d"></div>
+        <div class="d dd">A</div>
+        <div class="d dd ddd">B</div>
+        <div class="d dd dddd">C</div>
+        <div class="d c">A</div>
+        <div class="d c cc">B</div>
+        <div class="d c ccc">C</div>
+        <div class="d b">A</div>
+        <div class="d b bb">B</div>
+        <div class="d b bbb">C</div>
+        <div class="d a">A</div>
+        <div class="d a aa">B</div>
+        <div class="d a aaa">C</div>
+    </div>
+<script type="text/javascript">
+        var BoxDom=document.getElementsByClassName("box")[0];
+        var boxChild=[].slice.call(BoxDom.children);
+        setInterval(function(){
+           for(var i=0;i<boxChild.length;i++){
+            boxChild[i].style.background=randomColor();
+           }
+
+        },3000)
+        function randomColor(){
+            var r=Math.floor(Math.random()*255).toString(16);
+            var g=Math.floor(Math.random()*255).toString(16);
+            var b=Math.floor(Math.random()*255).toString(16);
+            return "#"+r+g+b;
+        }
+</script>
+</body>
+</html>

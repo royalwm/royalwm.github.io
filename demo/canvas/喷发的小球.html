@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		body{font-size:12px;font-family:"微软雅黑";color:#666;}
+	</style>
+ <body>
+		<canvas id="canvas" style="background:#000;"></canvas>
+		<script type="text/javascript">
+		window.onload=function(){
+			var canvas=document.getElementById("canvas");
+			canvas.width=window.screen.width;
+			canvas.height=window.screen.height;
+			var cwidth=canvas.width;
+			var cheight=canvas.height;
+			var context=canvas.getContext("2d");
+			var num=1000;
+			var balls=[];
+			for(var i=0;i<num;i++){
+			var ball=new Ball();
+			ball.r=Math.random()*10;
+			ball.x=(cwidth-ball.r)/2;
+			ball.y=cheight;
+			ball.vx=Math.random()*(8)-4;
+			ball.vy=Math.random()*-50;
+			ball.color=randomColor();
+			balls.push(ball);
+			}
+			function drawCanvas(ball){
+				ball.x+=ball.vx;
+				ball.vy+=1;
+				ball.y+=ball.vy;
+
+				if(ball.y<0||ball.y>cheight){
+					ball.r=Math.random()*10;
+					ball.x=(cwidth-ball.r)/2;
+					ball.y=cheight;
+					ball.vx=Math.random()*(8)-4;
+					ball.vy=Math.random()*-50;
+
+				}
+				ball.draw(context);
+			}
+			setInterval(function(){
+				cwidth=window.innerWidth;
+				context.clearRect(0,0,cwidth,cheight);
+				for(var i=0;i<balls.length;i++){
+				drawCanvas(balls[i]);
+				}
+
+			},100);
+		};
+			function Ball(r,num){
+				this.r=r;
+				this.x=0;
+				this.y=0;
+				this.color="red";
+				this.vx=0;
+				this.vy=0;
+			}
+			Ball.prototype.draw=function(context){
+				context.beginPath();
+				context.fillStyle=this.color;
+				context.arc(this.x,this.y,this.r,0,Math.PI*2);
+				context.fill();
+			};
+			function randomColor(){
+				var r=Math.floor(Math.random()*256).toString(16);
+				var g=Math.floor(Math.random()*256).toString(16);
+				var b=Math.floor(Math.random()*256).toString(16);
+				return "#"+r+g+b;
+			}
+		</script>
+ </body>
+</html>
+

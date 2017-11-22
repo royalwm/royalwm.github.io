@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>Examples</title>
+<style type="text/css">
+    *{margin:0;padding:0}
+</style>
+</head>
+<body onload="multi()">
+novalidate取消表单验证
+<form action="#" id="form1">
+min、max、step属性<input type="number" min="0" max="12" step="4">
+form或input autocomplete="on/off和空"只支持opera<input type="url"><br>
+datalist和list----输入你喜欢的城市：<input type="text" list="citylist"><br>
+<datalist id="citylist">
+    <option value="beijing">beijing</option>
+    <option value="lianyungang">lianyungang</option>
+    <option value="nanjing">nanjing</option>
+    <option value="changzhou">changzhou</option>
+</datalist>
+只有图片按钮：有width和height<input type="image" height="50" width="50" src="../../images/1.jpg"><br>
+multiple<input type="file" multiple><br>
+pattern属性<input type="text" pattern="[a-zA-Z]{4}"><br>
+placeholder<input type="text" placeholder="请输入文字"><br>
+required属性：说明该字段不能为空<input type="text" required ><br>
+请选择加密强度keygen：<keygen name="security" />
+两数的乘积为：<output name="results"></output>
+
+autofocus属性：<input type="submit" value="拒绝">
+
+<input type="submit" value="提交" autofocus="on">
+</form>
+新增的form属性:<input type="text" name="user" form="form1">
+
+<script type="text/javascript">
+function multi(){
+    var a=parseInt(prompt("请输入第一个数字",0));
+    var b=parseInt(prompt("请输入第二个数字",0));
+    document.forms["form1"].results.value=a*b;
+}
+</script>
+</body>
+</html>

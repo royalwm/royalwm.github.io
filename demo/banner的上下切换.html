@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>banner上下切换</title>
+<style type="text/css">
+    *{margin:0;padding:0}
+    #wrap{width: 590px;height:280px;margin: 100px auto;overflow: hidden;}
+    .box{position: relative;}
+    .box .banner_select{position: absolute;left:calc(50% - 75px);top: 250px;}
+    .box .banner_select li{list-style:none;width: 20px;height: 20px;background: #000;float:left;margin-left:10px}
+    .box .banner_select li:hover{cursor:pointer;}
+    .box .banner_select .select{background: #fff;}
+</style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="box">
+            <ul class="img">
+            <li><img src="images/1.jpg" height="280" width="590"></li>
+            <li><img src="images/2.jpg" height="280" width="590"></li>
+            <li><img src="images/3.jpg" height="280" width="590"></li>
+            <li><img src="images/4.jpg" height="280" width="590"></li>
+            <li><img src="images/5.jpg" height="280" width="590"></li>
+        </ul>
+        <ul class="banner_select">
+            <li class="select"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        </div>
+    </div>
+<script type="text/javascript" src="js/dom.js"></script>
+<script type="text/javascript">
+    var selectDom=$(".banner_select");
+    var imgDom=$(".img");
+    var selectChild=selectDom.children;
+    var len=selectChild.length;
+    var index=0;
+    var cindex=0;
+    for (var i = 0; i < len; i++) {
+        selectChild[i].index=i;
+        selectChild[i].onmouseover=function(){
+            for(var i=0;i<len;i++){
+                selectChild[i].className="";
+            }
+            this.className="select";
+            imgDom.style.position="absolute";
+            index=this.index;
+            cindex=this.index;
+            //imgDom.style.top=-this.index*280+"px";
+            move(imgDom,{top:-this.index*280},0.1);
+        }
+    }
+    var timer=setInterval(display,2000);
+    function display(){
+
+        if(index==0){
+            imgDom.children[0].style.position="static";
+            imgDom.style.top=0;
+            cindex=0;
+        }
+        if(index==(len-1)){
+            imgDom.children[0].style.position="relative";
+            imgDom.children[0].style.top=len*280+"px";
+            index=0;
+        }else{
+            index++;
+        }
+        cindex++;
+        for(var i=0;i<len;i++){
+                selectChild[i].className="";
+            }
+            selectChild[index].className="select";
+            imgDom.style.position="absolute";
+            //imgDom.style.top=-this.index*280+"px";
+            move(imgDom,{top:-this.cindex*280},0.1);
+    }
+</script>
+</html>

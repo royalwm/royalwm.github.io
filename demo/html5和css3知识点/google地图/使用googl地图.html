@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>Examples</title>
+<style type="text/css">
+    *{margin:0;padding:0}
+</style>
+</head>
+<iframe id="test" style="width:1000px;height:100px"></iframe>
+<a id="map" href="javascript:void(0)">点击查看自己的位置</a>
+<body onload="init()">
+<script type="text/javascript" src="googlemap.js"></script>
+<script type="text/javascript">
+function init(){
+     navigator.geolocation.getCurrentPosition(function(position){
+         var coords=position.coords;
+         //获取精度和维度
+         var latlong=new google.maps.LatLng(coords.latitude,coords.longitude);
+         var str=latlong.toString().substring(1,latlong.toString().length-1);
+         var jw=str.substring(0,str.indexOf(" "))+str.substring(str.indexOf(" ")+1);
+    var iframe = document.getElementById('test');
+    // var type=0;//0,1(iframe)
+    // var serach=1;//0 1显示搜索区域
+    // var policy=1;//0 1
+    // var mapdraggable=1;//0 1可拖动
+    // var zoom=15;//1-18
+    // var total=10;
+    // var referer="myapp";
+    // iframe.src="http://apis.map.qq.com/tools/locpicker?search="+serach+"&type="+type+"&policy="+policy+"&zoom="+zoom+"&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&referer="+referer;
+    //  window.addEventListener('message', function(event) {
+    //     // 接收位置信息，用户选择确认位置点后选点组件会触发该事件，回传用户的位置信息
+    //     var loc = event.data;
+    //     if (loc && loc.module == 'locationPicker') {//防止其他应用也会向该页面post信息，需判断module是否为'locationPicker'
+    //       console.log('location', loc);
+    //     }
+    // }, false);
+     document.write(jw);
+     });
+}
+</script>
+</body>
+</html>

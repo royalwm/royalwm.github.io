@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>飞机大战</title>
+<style type="text/css">
+    *{margin:0;padding:0}
+</style>
+</head>
+<body>
+<audio src="music/喜剧之王 - Here We Are Again.mp3" autoplay loop></audio>
+<script type="text/javascript">
+var plane={
+    box:null,
+    scoreDom:null,
+    totalScore:0,
+    score:0,
+    speed:0,
+    count:0,
+    bulletSpeed:200,
+    arrEnemy:[],
+    createPlaneTimer:null,
+    bulletTime:null,
+    initBackground:function(){
+        var $this=this;
+        document.body.style.background="#000";
+        var boxDom=document.createElement("div");
+        $this.box=boxDom;
+        with(boxDom.style){
+            width="500px",
+            height="700px",
+            margin="100px auto",
+            border="10px solid #fff",
+            position="relative";
+        }
+        var h1=document.createElement("h1");
+        with(h1){
+            innerHTML="飞机大战",
+            style.color="#fff",
+            style.marginTop="100px",
+            style.textAlign="center";
+        }
+        boxDom.appendChild(h1);
+        document.body.appendChild(boxDom);
+        var arrButton=[];
+        for (var i = 0; i < 4; i++) {
+        var button=document.createElement("div");
+        with(button){
+            switch(i){
+                case 0:innerHTML="简单模式";
+                        button.index=i;
+                        button.score=1;
+                        style.color="#fff";
+                        style.width="200px";
+                        style.height="40px";
+                        style.lineHeight="40px";
+                        style.margin="60px auto";
+                        style.textAlign="center";
+                        style.border="1px solid #ccc";
+                        style.cursor="pointer";
+                        onmouseover=function(){
+                            style.background="#ccc";
+                            style.color="#000";
+                        }
+                        onmouseout=function(){
+                            style.background="#000";
+                            style.color="#fff";
+                        }
+                break;
+                case 1:innerHTML="中等模式";
+                        button.index=i;
+                        button.score=2;
+                        style.color="#fff";
+                        style.width="200px";
+                        style.height="40px";
+                        style.lineHeight="40px";
+                        style.margin="100px auto";
+                        style.textAlign="center";
+                        style.border="1px solid #ccc";
+                        style.cursor="pointer";
+                        onmouseover=function(){
+                            style.background="#ccc";
+                            style.color="#000";
+                        }
+                        onmouseout=function(){
+                            style.background="#000";
+                            style.color="#fff";
+                        }
+                break;
+                case 2:innerHTML="困难模式";
+                        button.index=i;
+                        button.score=3;
+                        style.color="#fff";
+                        style.width="200px";
+                        style.height="40px";
+                        style.lineHeight="40px";
+                        style.margin="100px auto";
+                        style.textAlign="center";
+                        style.border="1px solid #ccc";
+                        style.cursor="pointer";
+                        onmouseover=function(){
+                            style.background="#ccc";
+                            style.color="#000";
+                        }
+                        onmouseout=function(){
+                            style.background="#000";
+                            style.color="#fff";
+                        }
+                break;
+                case 3:innerHTML="猛哥附体模式";
+                        button.index=i;
+                        button.score=4;
+                        style.color="#fff";
+                        style.width="200px";
+                        style.height="40px";
+                        style.lineHeight="40px";
+                        style.margin="100px auto";
+                        style.textAlign="center";
+                        style.border="1px solid #ccc";
+                        style.cursor="pointer";
+                        style.color="red";
+                        onmouseover=function(){
+                            style.background="#ccc";
+                            style.color="#000";
+                        }
+                        onmouseout=function(){
+                            style.background="#000";
+                            style.color="red";
+                        }
+                break;
+            }
+            arrButton.push(button);
+        }
+        boxDom.appendChild(button);
+        arrButton.forEach(function(obj,i){
+            obj.onclick=function(){
+                $this.speed=(obj.index+1)*10;
+                if(obj.index==3){
+                    $this.bulletSpeed=10;
+                }else{
+                    $this.bulletSpeed=200;
+                }
+                $this.count=$this.speed;
+                $this.score=obj.score;
+                $this.createPlane(obj);
+                $this.createSaveScore();
+                $this.createEnemyPlane();
+                $this.createPlaneTimer=setInterval(function(){
+                    $this.createEnemyPlane();
+                },5000);
+            }
+        });
+        };
+    },
+    createSaveScore:function(){
+        var $this=this;
+        var scoreDom=document.createElement("span");
+            $this.scoreDom=scoreDom;
+            scoreDom.style.position="absolute";
+            scoreDom.style.display="block";
+            scoreDom.style.width="50px";
+            scoreDom.style.height="30px";
+            scoreDom.style.top=0;
+            scoreDom.style.background="#fff";
+            scoreDom.style.lineHeight="30PX";
+            scoreDom.style.opacity="0.5";
+            scoreDom.style.textAlign="center";
+            scoreDom.innerHTML=$this.totalScore;
+        $this.box.appendChild(scoreDom);
+    },
+    createPlane:function(obj){
+        var $this=this;
+        $this.box.innerHTML="";
+        var img=new Image();
+        img.style.position="absolute";
+        img.src="images/plane.png";
+        img.style.width="50px";
+        img.style.height="50px";
+        img.style.bottom="0";
+        img.style.left="calc(50% - 25px)";
+        this.box.appendChild(img);
+        $this.bulletTime=setInterval(function(){
+            var bulletImg=new Image();
+            bulletImg.style.position="absolute";
+            bulletImg.src="images/bullet.png";
+            if(obj.index==3){
+                bulletImg.style.width="50px";
+                bulletImg.style.height="30px";
+            }else{
+                bulletImg.style.width="10px";
+                bulletImg.style.height="20px";
+            }
+            $this.box.appendChild(bulletImg);
+            //alert(bulletImg.offsetHeight)
+            bulletImg.style.left=(img.offsetLeft+img.offsetWidth/2)-(bulletImg.offsetWidth/2)+"px";
+            bulletImg.style.top=(img.offsetTop-bulletImg.offsetHeight)-30+"px";
+
+            bulletImg.timer=setInterval(function(){
+                bulletImg.style.top=(bulletImg.offsetTop-30)+"px";
+                if(bulletImg.offsetTop<-bulletImg.offsetHeight){
+                    clearInterval(bulletImg.timer);
+                    bulletImg.parentNode.removeChild(bulletImg);
+                }
+                var enemyChild=document.getElementsByClassName("enemy");
+                for (var i = 0; i < enemyChild.length; i++) {
+                    var mark=$this.pz(bulletImg,enemyChild[i]);
+                    var flag=$this.pz(img,enemyChild[i]);
+                    if(mark){
+                        enemyChild[i].src="images/boom.png";
+                        clearInterval(bulletImg.timer);
+                        clearInterval(enemyChild[i].timer);
+                        bulletImg.parentNode.removeChild(bulletImg);
+                        var obj=enemyChild[i];
+                        setTimeout(function(){
+                             if(obj)obj.parentNode.removeChild(obj);
+                        },50);
+                        $this.totalScore+=$this.score;
+                        $this.scoreDom.innerHTML=$this.totalScore;
+                    };
+                    if(flag){
+                        enemyChild[i].src="images/boom.png";
+                        img.src="images/boom2.png"
+                        setTimeout(function(){
+                            $this.box.innerHTML="";
+                            var h2=document.createElement("h2");
+                            with(h2){
+                            innerHTML="游戏结束",
+                            style.color="#fff",
+                            style.marginTop="100px",
+                            style.textAlign="center";
+                            }
+                            $this.box.appendChild(h2);
+                            var h2=document.createElement("h2");
+                            with(h2){
+                            innerHTML="总得分:"+$this.totalScore,
+                            style.color="#fff",
+                            style.marginTop="100px",
+                            style.textAlign="center";
+                            }
+                            $this.box.appendChild(h2);
+                            var h2=document.createElement("h2");
+                            var score=window.localStorage.getItem("score");
+                            score=score?((score>$this.totalScore)?score:localStorage.setItem("score",$this.totalScore)):localStorage.setItem("score",$this.totalScore);
+                            if(score==undefined)score=$this.totalScore;
+                            with(h2){
+                            innerHTML="历史最高得分:"+score,
+                            style.color="#fff",
+                            style.marginTop="100px",
+                            style.textAlign="center";
+                            }
+                            $this.box.appendChild(h2);
+                            if(localStorage){
+
+                            var h2=document.createElement("h2");
+                            }
+
+                            with(h2){
+                            innerHTML="返回界面",
+                            style.color="#fff",
+                            style.marginTop="100px",
+                            style.textAlign="center";
+                            onmouseover=function(){
+                            style.background="#ccc";
+                            style.color="#000";
+                            onclick=function(){
+                                clearInterval($this.createPlaneTimer);
+                                clearInterval($this.bulletTime);
+                                $this.box.parentNode.removeChild($this.box);
+                                $this.totalScore=0;
+                                $this.initBackground();
+                            }
+                            }
+                            onmouseout=function(){
+                                style.background="#000";
+                                style.color="#fff";
+                            }
+                            }
+                            $this.box.appendChild(h2);
+
+                        },100);
+                    };
+                };
+
+            },30);
+        },$this.bulletSpeed);
+        document.onkeydown=function(e){
+            var ev=e||window.event;
+            var keyCode=ev.keyCode||ev.which;
+            switch(keyCode){
+                case 37:
+                clearInterval(img.timer);
+                var left=(img.offsetLeft-$this.speed*5);
+                if(left<=0){
+                    $this.move(img,{left:0},0.1);
+                }else{
+                    $this.move(img,{left:left},0.1);
+                }
+                break;
+                case 38:
+                clearInterval(img.timer);
+                var top=(img.offsetTop-$this.speed*5);
+                if(top<=0){
+                    $this.move(img,{top:0},0.1);
+                }else{
+                    $this.move(img,{top:top},0.1);
+                }
+                break;
+                case 39:
+                clearInterval(img.timer);
+                var right=(img.offsetLeft+$this.speed*5);
+                var maxWidth=parseInt($this.box.style.width)-parseInt(img.style.width);
+                if(right>=maxWidth){
+                    $this.move(img,{left:maxWidth},0.1);
+                }else{
+                    $this.move(img,{left:right},0.1);
+                }
+                break;
+                case 40:
+                clearInterval(img.timer);
+                var top=(img.offsetTop+$this.speed*5);
+                var maxHeight=parseInt($this.box.style.height)-parseInt(img.style.height);
+                if(top>=maxHeight){
+                    $this.move(img,{top:maxHeight},0.1);
+                }else{
+                    $this.move(img,{top:top},0.1);
+                }
+                break;
+            }
+        }
+    },
+    getStyle:function(dom,attr){
+        if(window.getComputedStyle){
+            return window.getComputedStyle(dom,null)[attr];
+        }else{
+            return dom.currentStyle[attr];
+        }
+    },
+    move:function(dom,json,bit,callback){
+        var $this=this;
+         clearInterval(dom.timer);
+         var   cur=0;
+         var   target=0;
+         var speed=0;
+         dom.timer=setInterval(function(){
+           var mark=true;
+            for(var key in json){
+                if(key=="opacity"){
+                    cur=$this.getStyle(dom,key)*100||100;
+                    target=json["opacity"]*100;
+                }else{
+                    cur=parseInt($this.getStyle(dom,key))||0;
+                    target=parseInt(json[key]);
+                }
+                if(bit>1)bit=1;
+                speed=(target-cur)*bit;
+                speed=speed>0?Math.ceil(speed):Math.floor(speed);
+                if(cur!=target){
+                    mark=false;
+                if(key=="opacity"){
+                    //alert(speed)
+                    dom.style["opacity"]=(cur+speed)/100;
+               }else{
+                    dom.style[key]=cur+speed+"px";
+               }
+            }
+            if(mark){
+                clearInterval(dom.timer);
+                if(callback)callback.call(dom);
+            }
+        }
+        },60);
+    },
+    createEnemyPlane:function(){
+        var $this=this;
+        for (var i = 0; i < $this.count; i++) {
+        var img=new Image();
+        img.className="enemy";
+        img.style.position="absolute";
+        img.src="images/enemy.png";
+        img.style.width="20px";
+        img.style.height="20px";
+        img.style.top="0";
+        img.style.left=Math.random()*(parseInt($this.box.style.width)-parseInt(img.style.width))+"px";
+        //$this.arrEnemy.push(img);
+        this.box.appendChild(img);
+        };
+        var x=Math.random()*10;
+        var enemyChild=document.getElementsByClassName("enemy");
+        for (var i = 0; i < enemyChild.length; i++) {
+            $this.enemyMove(enemyChild[i]);
+        };
+    },
+    enemyMove:function(dom,callback){
+        var $this=this;
+        var ram=Math.random()*($this.speed)+1;
+        dom.timer=setInterval(function(){
+            dom.style["top"]=dom.offsetTop+ram+"px";
+            if(dom.offsetTop>=parseInt($this.box.style.height)-parseInt(dom.style.height)){
+                        clearInterval(dom.timer);
+                        dom.parentNode.removeChild(dom);
+                }
+            if(callback)callback.call(this);
+        },100);
+    },
+    //子弹碰撞
+    pz:function(current,target){
+        var minLeft=target.offsetLeft;
+        var maxRight=target.offsetLeft+target.offsetWidth;
+        var minTop=target.offsetTop;
+        var maxBottom=target.offsetTop+target.offsetHeight;
+        var cminLeft=current.offsetLeft;
+        var cmaxRight=current.offsetLeft+current.offsetWidth;
+        var cminTop=current.offsetTop;
+        var cmaxBottom=current.offsetTop+current.offsetHeight;
+        if(cminLeft>maxRight|| cmaxRight<minLeft || cminTop>maxBottom || cmaxBottom<minTop){
+            return false;
+        }else{
+            return true;
+        }
+    }
+}
+plane.initBackground();
+</script>
+</body>
+</html>

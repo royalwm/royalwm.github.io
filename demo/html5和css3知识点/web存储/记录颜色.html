@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>Examples</title>
+<style type="text/css">
+    *{margin:0;padding:0}
+</style>
+</head>
+<body onload="colorload()">
+<button id="redbtn" onclick="redSet()">红色</button>
+<button id="greenbtn" onclick="greenSet()">绿色</button>
+<button id="bluebtn" onclick="blueSet()">蓝色</button>
+<button onclick="clearStorage()">清空storage</button>
+<div id="divblock" style="width:500px;height:500px"></div>
+<script type="text/javascript">
+// window.localStorage.setItem("hellow","hollow");
+// window.localStorage.clear();
+// window.addEventListener("storage",displayStorageEvent,true);
+// function displayStorageEvent(e){
+//     var log="key:"+e.key+",newValue"+e.newValue+",oldValue"+e.oldValue+",url"+e.url+"storageArea"+e.storageArea;
+//     alert(log)
+// }
+if(window.localStorage){
+    var localStorage=localStorage;
+    function redSet(){
+        var value="red";
+        document.getElementById("divblock").style.backgroundColor=value;
+        localStorage.setItem("divbackground",value);
+    }
+    function greenSet(){
+        var value="green";
+        document.getElementById("divblock").style.backgroundColor=value;
+        localStorage.setItem("divbackground",value);
+    }
+    function blueSet(){
+        var value="blue";
+        document.getElementById("divblock").style.backgroundColor=value;
+        localStorage.setItem("divbackground",value);
+    }
+    function colorload(){
+        document.getElementById("divblock").style.backgroundColor=localStorage.getItem("divbackground");
+    }
+    function clearStorage(){
+        localStorage.clear();
+    }
+}
+</script>
+</body>
+</html>

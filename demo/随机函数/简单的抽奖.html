@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		body{font-size:12px;font-family:"微软雅黑";color:#666;}
+		.box{width:200px;margin:100px auto;position:relative;}
+		.box #num{width:100px;height:100px;border-radius:50%;background:red;margin-bottom:50px;margin-left:20px;text-align:center;line-height:100px;font-size:20px;}
+		.box input{width:100px;height:30px;float:left;text-align:center;line-height:30px;z-index:99;}
+		.box #send{width:50px;height:32px;background:#999;float:left;text-align:center;line-height:32px;margin-left:5px;transition:all 1s ease;color:#000;}
+		.box #send:hover{background:#c00;transition:all 1s ease;}
+		.box #decide{width:155px;height:32px;background:#999;float:left;text-align:center;line-height:32px;margin-top:20px;transition:all 1s ease;color:#000;}
+		.box #decide:hover{background:#c00;transition:all 1s ease;}
+		.hint{width:100px;height:25px;text-align:center;line-height:30px;background:#999;position:absolute;top:155px;left:0px;z-index:-1;color:#000;}
+		.hint1{animation:move 3s ease}
+		#con{position:absolute;top:-50px;left:0;color:#000;font-size:30px;white-space:nowrap}
+		#list{position:absolute;top:0px;left:0;color:#000;font-size:30px;}
+		@keyframes move{
+			from{top:155px;opacity:1;}
+			40%{top:120px;opacity:0.5;}
+			to{top:100px;opacity:0.2;}
+		}
+	</style>
+ <body bgcolor="#fff">
+		<div class="wrap">
+			<div class="box">
+				<div id="num"></div>
+				<input type="text"  placeholder="请输入抽奖的人"/><div id="send" onclick="send(this)">添加</div>
+				<div id="decide" onclick="decide(this)">开始抽奖</div>
+				<div class="hint" >添加成功！</div>
+				<div id="con"></div>
+			</div>
+				<div id="list"></div>
+		</div>
+		<script type="text/javascript">
+				var arr=[];
+				var arr1=[];
+				var timer=null;
+				var numDom=document.getElementById("num");
+				var conDom=document.getElementById("con");
+				var listDom=document.getElementById("list");
+				document.onkeydown=function(e){
+					var ev=e||window.event;
+					var code=e.keyCode||e.which;
+					if(code==13){
+					 send(document.getElementById("send"));
+					}
+				};
+				function send(obj){
+					if(arr.indexOf(obj.previousElementSibling.value)!==-1){
+						alert("不能输入相同的名字");
+						return;
+					}
+					var  svalue=obj.previousElementSibling.value;
+					arr.push(svalue);
+					listDom.innerHTML="";
+					for(var i=0;i<arr.length;i++){
+						listDom.innerHTML+=arr[i]+"<br />";
+					}
+					if(obj.previousElementSibling.value==""||obj.previousElementSibling.value==" "){
+						obj.previousElementSibling.focus();
+						return;
+					}
+					var hintDom=document.createElement("div");
+					hintDom.className="hint hint1";
+					hintDom.innerHTML="添加成功！";
+					numDom.appendChild(hintDom);
+					arr1.push(hintDom);
+					if(arr1.length>10){
+						arr1.shift();
+					}
+					return obj;
+				};
+				function decide(obj){
+					var len=arr.length-1;
+					if(obj.innerHTML=="停止"){
+						clearTimeout(timer);
+						obj.innerHTML="开始抽奖";
+						conDom.innerHTML="恭喜"+numDom.innerHTML+"中奖！！！";
+					}else{
+					obj.innerHTML="停止";
+					timer=setInterval(function(){
+						var num=Math.floor(Math.random()*(len-0+1)+0)
+						numDom.innerHTML=arr[num];
+					}),300};
+
+				};
+		</script>
+ </body>
+</html>
+

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		body{font-size:20px;font-family:"微软雅黑";color:#666;}
+	</style>
+ <body>
+		<div id="box"></div>
+		<script type="text/javascript">
+			var boxDom=document.getElementById("box");
+			var arr=[];
+			arr.push("大家好啊，我是用数组装起来的！");
+			arr.push("我是索引1的数组元素，我用br 换行了！");
+			arr.push("用时间定时器来一个一个元素递加");
+			arr.push("用charAt来取索引");
+			arr.push("大家好啊，我是用数组装起来的！");
+			arr.push("我是索引1的数组元素，我用br 换行了！");
+			arr.push("用时间定时器来一个一个元素递加");
+			arr.push("用charAt来取索引");
+			arr.push("大家好啊，我是用数组装起来的！");
+			arr.push("我是索引1的数组元素，我用br 换行了！");
+			arr.push("用时间定时器来一个一个元素递加");
+			arr.push("用charAt来取索引");
+			var len=arr.length;
+			var cindex=0;
+			var index=0;
+			var audioDom=document.createElement("audio");
+			audioDom.src="../music/2.mp3";
+			function print(){
+				var str=arr[index];
+				var clen=str.length;
+				var code=str.charAt(cindex);
+				boxDom.innerHTML=boxDom.innerHTML.replace("_","");
+				boxDom.innerHTML+=code+"_";
+				audioDom.play();
+				cindex++;
+				if(cindex>clen){
+					boxDom.innerHTML+="<br />";
+					index++;
+					cindex=0;
+				if(index==len){
+					clearInterval(timer);
+						boxDom.innerHTML=boxDom.innerHTML.replace("_","");
+						audioDom.pause();
+					}
+				}
+			}
+			var timer=setInterval(print,100);
+		</script>
+ </body>
+</html>
+

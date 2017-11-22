@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>Examples</title>
+<style type="text/css">
+    *{margin:0;padding:0}
+    #wrap{width:200px;height: 200px;background: red;}
+    #box{width:100px;height: 100px;background: green;position: absolute;}
+</style>
+</head>
+<body>
+<div id="wrap">
+    <div id="box"></div>
+
+</div>
+
+<script type="text/javascript" src="js/dom.js"></script>
+<script type="text/javascript">
+    var boxDom=$("#box");
+    drag({id:boxDom,ghost:true,callback:function(){
+
+    }});
+    function drag(options){
+        var opts=mix({},{position:options.id.parentElement,arrow:"null",opacity:0.2,ghost:false},options);
+        var dom=opts.id;
+   dom.onmousedown=function(e){
+        var sx=getXY(e).x;
+        var sy=getXY(e).y;
+        var ol=dom.offsetLeft;
+        var ot=dom.offsetTop;
+        this.style.cursor="move";
+        if(opts.ghost)var divGhost=dom.cloneNode();
+        document.onmousemove=function(e){
+            var tx=getXY(e).x;
+            var ty=getXY(e).y;
+            var x=0,y=0;
+            if(opts.arrow=="null"){
+             x=tx-(sx-ol);
+             y=ty-(sy-ot);
+            }else if(opts.arrow=="h"){
+                y=dom.style.top;
+                x=tx-(sx-ol);
+            }else if(opts.arrow=="v"){
+                x=dom.style.left;
+                y=ty-(sy-ot);
+            }
+            var MaxLeft=0;
+            var maxTop=0;
+            if(opts.position==document.getElementsByTagName("body")[0]){
+            var maxX=Math.max(window.innerWidth,document.body.clientWidth);
+            var maxY=Math.max(window.innerHeight,document.body.clientHeight);
+             MaxLeft=maxX-dom.offsetWidth;
+             MaxTop=maxY-dom.offsetHeight;
+             }else{
+                var maxX=opts.position.offsetWidth+opts.position.offsetLeft;
+                var maxY=opts.position.offsetTop+opts.position.offsetHeight;
+                MaxLeft=maxX-dom.offsetWidth;
+                MaxTop=maxY-dom.offsetHeight;
+             }
+            if(x<=0)x=0;
+            if(y<=0)y=0;
+            if(x>=MaxLeft)x=MaxLeft;
+            if(y>=MaxTop)y=MaxTop;
+           if(opts.ghost){
+             opts.position.appendChild(divGhost);
+             divGhost.style.left=x+"px";
+             divGhost.style.top=y+"px";
+             divGhost.style.opacity=opts.opacity;
+           }else{
+             dom.style.left=x+"px";
+             dom.style.top=y+"px";
+           }
+        }
+        document.onmouseup=function(){
+            document.onmousemove=null;
+            document.onmouseup=null;
+            if(opts.ghost){
+                 dom.style.left=divGhost.style.left;
+                 dom.style.top=divGhost.style.top;
+                opts.position.removeChild(divGhost);
+            }
+            dom.style.cursor="default";
+            if(opts.callback)opts.callback.call(dom);
+        }
+    }
+}
+    function mix(source,target){
+        var args=[].slice.call(arguments);
+        var i=1;
+        if(args.length==1){
+            return source;
+        }
+        while(target=args[i++]){
+            for(var key in target){
+                if(target.hasOwnProperty(key)){
+                    source[key]=target[key];
+                }
+            }
+        }
+        return source;
+    }
+    function getXY(e){
+    var ev = e || window.event;
+    var x=0,y=0;
+    if(ev.pageX){
+        x = ev.pageX;
+        y = ev.pageY;
+    }else{
+        //拿到scrollTop 和scrollLeft
+        var sleft = 0,stop = 0;
+        //ie678---
+        if(document.documentElement){
+            stop =document.documentElement.scrollTop;
+            sleft = document.documentElement.scrollLeft;
+        }else{
+        //ie9+ 谷歌
+            stop = document.body.scrollTop;
+            sleft = document.body.scrollLeft;
+        }
+        x = ev.clientX + sleft;
+        y = ev.clientY + stop;
+    }
+    return {x:x,y:y};
+};
+</script>
+</body>
+</html>

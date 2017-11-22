@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>ball运动</title>
+<style type="text/css">
+    *{margin:0;padding:0}
+    #canvas{background: #000;}
+</style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script type="text/javascript">
+    var canvas=document.getElementById("canvas");
+    canvas.width=document.documentElement.clientWidth;
+    canvas.height=document.documentElement.clientHeight;
+    var ctx=canvas.getContext("2d");
+    function Ball(x,y,radius,color){
+        if(x==undefined)x=0;
+        if(y==undefined)y=0;
+        if(radius==undefined)radius=50;
+        if(color==undefined)color="red";
+        this.x=x;
+        this.y=y;
+        this.radius=radius;
+        this.color=color;
+    }
+    Ball.prototype.draw=function(ctx){
+        ctx.save();
+        ctx.beginPath();
+        ctx.fillStyle="#fff";
+        ctx.fillText("ball运动.html",this.x,this.y);
+        ctx.fillStyle=this.color;
+        ctx.translate(canvas.width/2,canvas.height/2);
+        ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);
+        ctx.fill();
+        ctx.restore();
+    }
+    var ball=new Ball(0,0,100);
+    var i=0.1;
+    (function moveFrame(){
+        window.requestAnimationFrame(moveFrame);
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        ball.y=Math.sin(i+=0.1)*50;
+        ball.draw(ctx);
+
+    })()
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>Examples</title>
+<style type="text/css">
+    *{margin:0;padding:0}
+</style>
+</head>
+<body>
+<div id = "qrcodeid"></div>
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.qrcode.min.js"></script>
+<script>
+function utf16to8(str) { //解决中文乱码
+  var out, i, len, c;
+  out = "";
+  len = str.length;
+  for(i = 0; i < len; i++) {
+  c = str.charCodeAt(i);
+  if ((c >= 0x0001) && (c <= 0x007F)) {
+    out += str.charAt(i);
+  } else if (c > 0x07FF) {
+    out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));
+    out += String.fromCharCode(0x80 | ((c >> 6) & 0x3F));
+    out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F));
+  } else {
+    out += String.fromCharCode(0xC0 | ((c >> 6) & 0x1F));
+    out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F));
+  }
+  }
+  return out;
+}
+</script>
+<script>//此处生成名片二维码（如要生成普通链接二维码 则 “text”参数值 直接替换成普通链接即可）
+var the_text = "BEGIN:VCARD \r\nFN:王猛 \r\nTEL;CELL,VOICE:17314975090 \r\nTITLE:学生 \r\nORG:泰迪养殖场 \r\nEMAIL;INTERNET,HOME:1245857108@qq.com \r\nADR;WORK,POSTAL:南京... \r\nURL:www.taidiyangzhichang.com \r\nEND:VCARD";
+the_text = utf16to8("我爱你");
+//alert(the_text);
+$("#qrcodeid").qrcode({
+width:600,
+height:600,
+render:"canvas", //设置渲染方式 table canvas
+typeNumber : -1,  //计算模式
+correctLevel  : 0,//纠错等级
+background   : "#ffffff",//背景颜色
+foreground   : "#000000",//前景颜色
+text:the_text
+});
+</script>
+</body>
+</html>

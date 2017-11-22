@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+	<head>
+		<!--申明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8(国际编码)-->
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<title>块级元素</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="小于等于80字">
+
+		<!--js/css-->
+		<style type="text/css">
+			*{margin:0;padding:0;}
+			h1{text-align:center;z-index:99;}
+			.box{width:100px;height:100px;background:red;position:absolute;top:0;left:0;border-radius:50px;text-align:center;line-height:100px;font-size:30px;z-index:1;}
+			.box:hover{cursor:pointer;}
+			.submit{float:left;background:green;}
+			.submit:hover{background:red;cursor:pointer;}
+		</style>
+	</head>	
+<body>
+		<h1 id="title">点击小球清除:当前还剩<span id="x"></span>个</h1>
+		
+		<script type="text/javascript">
+		window.onload =function(){
+		var arr=[];
+		var x=0;
+		var xspeed=4;
+		var yspeed=5;
+		for (var i=0;i<20;i++){
+			var divDom=document.createElement("div");
+			divDom.className="box";
+			document.body.appendChild(divDom);
+			divDom.x=0;
+			divDom.y=0;
+			divDom.innerHTML=i;
+			divDom.xstep=Math.floor(Math.random()*(xspeed*i+1)+1);
+			divDom.ystep=Math.floor(Math.random()*(yspeed*i+1)+1);
+			divDom.onclick=function(){
+				//var item=arr.indexOf(this);
+				document.body.removeChild(this);
+				x+=1;					
+			};
+			arr.push(divDom);
+			}
+			var c=document.getElementById("title");
+		var len=arr.length;	
+		function draw(){
+			var len=arr.length;		
+			var geshu=document.getElementById("x");
+			var y=geshu.innerHTML=len-x;
+			if(y==0){
+			 c.innerHTML="当前小球为0,请重新刷新页面";
+			 clearTimeout(true);
+			}
+		for(var i=0;i<len;i++){
+			var boxDom=arr[i];
+			var maxwidth=window.innerWidth-boxDom.offsetWidth;
+			var maxheight=window.innerHeight-boxDom.offsetHeight;
+			boxDom.x+=boxDom.xstep;
+			boxDom.y+=boxDom.ystep;
+			boxDom.style.left=boxDom.x+"px";
+			boxDom.style.top=boxDom.y+"px";
+			if(boxDom.x>=maxwidth){
+				boxDom.xstep=-xspeed-3*i;
+				boxDom.x=maxwidth;
+				boxDom.style.background=colorRand();
+				boxDom.style.transform="scale(2)";
+			}
+			if(boxDom.y>=maxheight){
+				boxDom.ystep=-yspeed-3*i;
+				boxDom.y=maxheight;
+				boxDom.style.background=colorRand();
+				boxDom.style.transform="scale(1)";
+			}
+			if(boxDom.x<=0){
+				boxDom.xstep=xspeed+2*i;
+				boxDom.x=0;
+				boxDom.style.background=colorRand();
+				boxDom.style.transform="scale(6)";
+			}
+			if(boxDom.y<=0){
+				boxDom.ystep=yspeed+3*i;
+				boxDom.y=0;
+				boxDom.style.transform="scale(1)";
+				boxDom.style.background=colorRand();
+			}
+			if(boxDom.x<maxwidth||boxDom.x>0||boxDom.y<maxwidth||boxDom.y>0){
+				//boxDom.style.transform="scale(1)";
+			}
+			}
+			};
+		setInterval(draw,100);
+		function colorRand(){
+			var r=parseInt(Math.floor(Math.random()*255)).toString(16);
+			var g=parseInt(Math.floor(Math.random()*255)).toString(16);
+			var b=parseInt(Math.floor(Math.random()*255)).toString(16);
+			return "#"+r+g+b;
+		
+		};
+
+		}
+		
+		</script>
+
+</body>
+	
+
+</html>

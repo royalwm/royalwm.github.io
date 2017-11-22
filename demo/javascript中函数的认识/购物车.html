@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+	<style type="text/css">
+		*{margin:0;padding:0;}	
+		body{font-size:12px;font-family:"微软雅黑";color:#666;}
+		a{text-decoration:none;display:block;font-size:14px;color:#000;}
+		li{list-style:none;}
+		#wrap{margin:100px auto;width:1000px}
+		.title{margin-left:20px;}
+		.title label{display:block;float:left;}
+		.title div{float:left;}
+		.title .good_info{margin-left:70px;}
+		.title .per{margin-left:400px;}
+		.title .count{margin-left:70px;}
+		.title .price{margin-left:70px;}
+		.title .op{margin-left:70px;}
+		.clear{clear:both;}
+
+		.classify .list{margin:40px 20px;}
+		.classify ul li{float:left;}
+		.classify ul li input{display:block;float:left;}
+		.classify ul li .dp_icon{background:url("images/dp.png") no-repeat;width:20px;height:20px;display:block;float:left;margin-left:10px;}
+		.classify ul li .dianpu{margin-left:5px;font-size:14px;float:left;color:#000;}
+		.classify ul li .dp_name{float:left;margin-left:10px;}
+		.classify ul li .dp_contact{background:url("images/wangwang.png") no-repeat;width:25px;height:20px;float:left;margin-left:10px;animation:move .5s ease infinite}
+		@keyframes move{
+			from{background-position:1px -1px;}
+			to{background-position:1px 0px;}
+		}
+		.classify ul li .info_list{padding:20px;border:1px solid #999;width:900px;height:60px;position:relative;}
+		.classify ul li .description{position:absolute;left:200px;top:60px;width:700px;height:20px;display:none;border:1px solid #999;}
+		.classify ul li img{padding:10px;float:left;}
+		.classify ul li .book_name{margin-left:10px;float:left;width:200px;height:40px;overflow:hidden;}
+		.classify ul li .book_name:hover{text-decoration:underline;color:blue;}
+		.classify ul li .book_price{margin-left:220px;float:left;font-weight:bold;}
+		.classify ul li .book_count{margin-left:40px;float:left;}
+		.classify ul li .book_count .min{display:block;float:left;width:20px;height:28px;background:#999;text-align:center;font-size:16px;cursor:pointer;}
+		.classify ul li .book_count input{width:50px;height:26px;line-height:26px;text-align:center;}
+		.classify ul li .book_count .plus{display:block;float:left;width:20px;height:28px;background:#999;text-align:center;font-size:16px;cursor:pointer;}
+		.classify ul li .danjia{margin-left:50px;float:left;color:red;font-weight:bold;width:30px;}
+		.classify ul li .delete{margin-left:80px;float:left;}
+		.classify ul li .delete a:hover{text-decoration:underline;color:red;}
+
+		#wrap .jiesuan{margin:10px 0px 0 700px;}
+		.jiesuan span{display:block;width:40px;height:40px;float:left;}
+		.jiesuan a{width:90px;height:40px;background:pink;border-radius:5px;text-align:center;line-height:40px;float:left;}
+		.jiesuan a:hover{width:100px;height:50px;background:red;line-height:50px;}
+	</style>
+ <body>
+		<div id="wrap">
+				<div class="title"><label for="quanxuan"><input type="checkbox" id="quanxuan" checked="true"/>全选</label>
+					<div class="good_info">商品信息</div>
+					<div class="per">单价(元)</div>
+					<div class="count">数量</div>
+					<div class="price">金额(元)</div>
+					<div class="op">操作</div>
+					</div>
+					<div class="clear"></div>
+				<div class="classify">
+					<ul class="list">
+							<li>
+								<input type="checkbox" class="select" checked="true"/><i class="dp_icon"></i><span class="dianpu">店铺:</span><a href="#" class="dp_name">中译图书专营店</a><a href="#" class="dp_contact"></a>
+								<div class="clear"></div>
+								<div class="info_list">
+									<input type="checkbox" class="select" checked="true"/><img src="images/vb.jpg" width="" height="" /><a href="#" class="book_name">正版！Visual Basic开发实战1200例（第I+Ⅱ卷）2册 史上最全的VB编程实例教材 VB程序设计书籍 计算机教材 编程语言教程</a>
+									<div class="description">正版！Visual Basic开发实战1200例（第I+Ⅱ卷）2册 史上最全的VB编程实例教材 VB程序设计书籍 计算机教材 编程语言教程</div>
+									<span class="book_price" >145</span>
+									<div class="book_count">
+										<span class="min">-</span><input type="text"  value="1"/><span class="plus">+</span>
+									</div>
+									<div class="danjia">145
+									</div>
+									<div class="delete"><a href="#">删除</a></div>
+								</div>
+							</li>
+							<li>
+								<input type="checkbox" class="select" checked="true" /><i class="dp_icon"></i><span class="dianpu">店铺:</span><a href="#" class="dp_name">中译图书专营店</a><a href="#" class="dp_contact"></a>
+								<div class="clear"></div>
+								<div class="info_list">
+									<input type="checkbox"class="select" checked="true" /><img src="images/vb.jpg" width="" height="" /><a href="#" class="book_name">正版！Visual Basic开发实战1200例（第I+Ⅱ卷）2册 史上最全的VB编程实例教材 VB程序设计书籍 计算机教材 编程语言教程</a>
+									<div class="description">正版！Visual Basic开发实战1200例（第I+Ⅱ卷）2册 史上最全的VB编程实例教材 VB程序设计书籍 计算机教材 编程语言教程</div>
+									<span class="book_price" >145</span>
+									<div class="book_count">
+										<span class="min">-</span><input type="text"  value="1"/><span class="plus">+</span>
+									</div>
+									<div class="danjia">145
+									</div>
+									<div class="delete"><a href="#">删除</a></div>
+								</div>
+							</li>
+					</ul>
+				</div>
+				<div class="clear"></div>
+				<div class="jiesuan"><span class="zongji">总计：</span><a href="#" class="tijiao">结算</a></div>
+		</div>
+		<script src="js/jquery-1.11.2.min.js"></script>
+		<script type="text/javascript">
+				//全选
+				var jiesuan=0;
+				$("#quanxuan").on("click",function(){
+					if(this.checked==true){
+						$(".select").attr("checked",true);
+					}else{
+						$(".select").attr("checked",false);
+					}
+				});
+				$(".list").find(".book_name").mouseover(function(){	
+					$(this).next().fadeIn(3000).css("display","block");
+					}).mouseout(function(){
+						$(this).next().css("display","none")
+				});
+				$(".list").find(".plus").on("click",function(){
+					var plus=$(this).prev();
+					var val=plus.val()*1;
+					val++;
+					plus.val(val);
+					var danjia=$(this).parents().prev(".book_price").text()*1;
+					var total=val*danjia;
+					parseFloat(($(this).parents().next(".danjia")).text(total));
+					
+					jiesuan+=total;
+					$(".jiesuan").find(".zongji").text(jiesuan);
+				});
+				$(".list").find(".min").on("click",function(){
+					var min=$(this).next();
+					var val=min.val()*1;
+					val--;
+					if(val==0)return;
+					min.val(val);
+					var danjia=$(this).parents().prev(".book_price").text()*1;
+					var total=val*danjia;
+					parseFloat(($(this).parents().next(".danjia")).text(total));
+				});
+				$(".list").find(".delete a").on("click",function(){
+					$(this).parents("li").fadeOut(5000).remove();
+				});
+		</script>
+ </body>
+</html>
+
